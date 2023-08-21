@@ -1,13 +1,13 @@
 {
-  "name": "mtg-boilerplate",
+  "name": "perles-des-saveurs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "author": "Marin",
   "license": "MIT",
   "env": {
-    "dev": "mtg-dev-antoine",
-    "prod": "mtg-dev-antoine"
+    "dev": "mtg-dev-marin",
+    "prod": "mtg-dev-marin"
   },
   "scripts": {
     "clean:dist": "rm -rf dist && mkdir dist ",
