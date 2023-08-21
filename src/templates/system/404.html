@@ -1,0 +1,18 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: Boilerplate - 404 error
+  screenshotPath: ../../images/template-previews/404.png
+-->
+{% extends "../layouts/base.html" %}
+{# pageTitle is used on system templates for setting a value for the title tag #}
+{% set pageTitle = "Error 404 | Page not found" %}
+
+{% block body %}
+<section class="error-page content-wrapper">
+  <div class="container" data-error="404">
+    <h1>Page not found.</h1>
+    <a href="/" class="btn">Home</a>
+  </div>
+</section>
+{% endblock body %}
