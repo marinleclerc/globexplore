@@ -1,0 +1,32 @@
+<section id="{{module.module_identity}}" class="hero-section">
+    <div class="img-wrapper">
+        <img class="fit-cover" loading='lazy' src='{{module.image.src}}' alt='{{module.image.alt}}'
+            width='{{module.image.width}}' height='{{module.image.height}}' />
+        <svg class="pattern" width="1133" height="842" viewBox="0 0 1133 842" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.1">
+                <path
+                    d="M1046.58 573.232C1023.15 654.939 948.335 713.7 846.018 742.52C743.718 771.335 614.082 770.158 481.379 732.097C348.675 694.036 238.122 626.324 166.647 547.668C95.1587 468.999 62.8639 379.518 86.2983 297.812C109.733 216.105 184.545 157.344 286.862 128.524C389.162 99.7091 518.798 100.886 651.501 138.947C784.205 177.008 894.758 244.72 966.233 323.376C1037.72 402.045 1070.02 491.526 1046.58 573.232Z"
+                    stroke="#FFFFFB" stroke-width="2" />
+                <path
+                    d="M1059.07 352.953C1073.12 436.784 1030.92 522.042 950.999 592.129C871.092 662.203 753.595 716.988 617.441 739.809C481.286 762.63 352.348 749.15 253.96 708.959C155.555 668.762 87.8622 601.922 73.8113 518.091C59.7603 434.26 101.96 349.002 181.88 278.915C261.787 208.84 379.283 154.055 515.438 131.235C651.592 108.414 780.531 121.894 878.919 162.084C977.324 202.282 1045.02 269.121 1059.07 352.953Z"
+                    stroke="#FFFFFB" stroke-width="2" />
+            </g>
+        </svg>
+    </div>
+    <div class=" container">
+        <div class="content-wrapper">
+            <div>
+                <h1>
+                    {{module.title}}
+                </h1>
+                <div class="description">
+                    {{module.description}}
+                </div>
+            </div>
+            <a href="{{module.button.url_field.href}}" class="btn primary">
+                <span>{{module.button.button_text}}</span>
+            </a>
+        </div>
+    </div>
+</section>

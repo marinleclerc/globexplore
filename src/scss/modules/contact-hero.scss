@@ -1,0 +1,32 @@
+.contact-hero {
+    background-color: $color1;
+
+    .title {
+        width: calc(50% - 15px);
+        color: $text-color2;
+        margin-bottom: 75px;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        .form-wrapper {
+            width: calc(50% - 15px);
+        }
+
+        .img-wrapper {
+            width: calc(100% / 12 * 4 - 15px);
+            position: relative;
+
+            .inner {
+                position: absolute;
+                left: 0;
+                top: 0;
+                overflow: hidden;
+                width: 515px;
+                height: 100%;
+            }
+        }
+    }
+}

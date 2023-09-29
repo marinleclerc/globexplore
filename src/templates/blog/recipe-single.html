@@ -1,0 +1,17 @@
+<!--
+  templateType: blog
+  isAvailableForNewContent: true
+  label: Perles des saveurs - Recette single
+-->
+{% extends '../layouts/base-recipe.html' %}
+{% block body %}
+
+<div class="recipe-template">
+  {% module "module_16947662000042" path="/globexplorer/modules/recipe-hero-section", label="recipe-hero-section" %}
+  {% module "module_16947645601051" path="/globexplorer/modules/recipe-details", label="recipe-details" %}
+</div>
+{% module "module_16947836795261" path="/globexplorer/modules/related-products", label="related-products" %}
+{% module "module_16932967566322" path="/globexplorer/modules/recipes", label="recipes", content_style='{"theme":
+"light", "section_type": "xl"}' %}
+{% module "module_16947667695773" path="/globexplorer/modules/banner-cta", label="banner-cta" %}
+{% endblock body %}

@@ -1,0 +1,131 @@
+[
+    {
+        "name": "module_identity",
+        "label": "Module ID",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text"
+    },
+    {
+        "name": "logo",
+        "label": "Logo",
+        "required": false,
+        "locked": false,
+        "children": [
+            {
+                "name": "image_field",
+                "label": "Image",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "size_type": "auto",
+                    "src": "https://via.placeholder.com/300x150",
+                    "alt": null,
+                    "loading": "disabled"
+                }
+            },
+            {
+                "name": "url_field",
+                "label": "URL",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "supported_types": [
+                    "EXTERNAL",
+                    "CONTENT",
+                    "FILE",
+                    "EMAIL_ADDRESS",
+                    "BLOG"
+                ],
+                "type": "url",
+                "default": {
+                    "content_id": null,
+                    "href": "/",
+                    "type": "EXTERNAL"
+                }
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {}
+    },
+    {
+        "name": "items",
+        "label": "Items de navigation",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+            "min": 1,
+            "max": null,
+            "sorting_label_field": null,
+            "default": null
+        },
+        "children": [
+            {
+                "name": "text_field",
+                "label": "Texte",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "Homepage"
+            },
+            {
+                "name": "link_field",
+                "label": "Link",
+                "required": false,
+                "locked": false,
+                "supported_types": [
+                    "EXTERNAL",
+                    "CONTENT",
+                    "FILE",
+                    "EMAIL_ADDRESS",
+                    "BLOG"
+                ],
+                "type": "link",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": {
+                    "url": {
+                        "content_id": null,
+                        "type": "EXTERNAL",
+                        "href": "/"
+                    },
+                    "open_in_new_tab": false,
+                    "no_follow": false
+                }
+            },
+            {
+                "name": "featured",
+                "label": "Mis en avant",
+                "required": false,
+                "locked": false,
+                "type": "boolean",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": false
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": []
+    }
+]

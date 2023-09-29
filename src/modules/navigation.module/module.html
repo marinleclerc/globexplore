@@ -1,0 +1,54 @@
+<header id="{{module.module_identity}}" class="navigation">
+    <div class="container">
+        <a href="{{module.logo.url_field.href}}" class="logo">
+            <img loading='lazy' src='{{module.logo.image_field.src}}' alt='{{module.logo.image_field.alt}}'
+                width='{{module.logo.image_field.width}}' height='{{module.logo.image_field.height}}' />
+        </a>
+        <button id="toggler-nav" class="toggler">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="wrapper">
+            <svg class="pattern" width="795" height="717" viewBox="0 0 795 717" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g opacity="0.1">
+                    <path
+                        d="M681.517 322.444C687.651 370.612 661.651 418.395 614.323 456.709C567.008 495.012 498.5 523.733 420.008 533.728C341.516 543.723 267.997 533.088 212.593 507.865C157.173 482.635 120.028 442.893 113.894 394.725C107.761 346.557 133.76 298.774 181.089 260.46C228.403 222.157 296.911 193.436 375.403 183.441C453.895 173.446 527.414 184.081 582.818 209.304C638.238 234.534 675.383 274.276 681.517 322.444Z"
+                        stroke="#FFFFFB" stroke-width="2" />
+                    <path
+                        d="M638.261 203.704C664.547 244.53 661.668 298.853 635.463 353.818C609.265 408.767 559.813 464.2 493.284 507.034C426.755 549.869 355.826 571.944 294.962 573.049C234.079 574.155 183.436 554.292 157.15 513.466C130.864 472.639 133.742 418.317 159.948 363.351C186.146 308.402 235.597 252.97 302.126 210.135C368.655 167.301 439.585 145.226 500.449 144.12C561.332 143.014 611.975 162.877 638.261 203.704Z"
+                        stroke="#FFFFFB" stroke-width="2" />
+                </g>
+            </svg>
+            <nav>
+                <ul>
+                    {% for item in module.items %}
+                    <li>
+                        <a href="{{item.link_field.url.href}}"
+                            class="nav-item{% if item.featured %} featured btn secondary white{% endif %}">
+                            {{item.text_field}}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            {% if content.language %}
+            <div class="language-wrapper-wrapper d-rp-none">
+                {# {% module "language-switcher" path="@hubspot/language_switcher",
+                display_mode='localized', label="Language Switcher" %} #}
+                {% language_switcher "language_switcher" %}
+                <div class="country">
+                    {% if content.language.languageTag == 'en' %}
+                    En
+                    {% elif content.language.languageTag == 'fr' %}
+                    Fr
+                    {% else %}
+                    Fr
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</header>

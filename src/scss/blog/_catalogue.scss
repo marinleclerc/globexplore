@@ -1,0 +1,19 @@
+.catalogue-template {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 180px;
+
+    .catalogue {
+
+        .label,
+        .title {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .listing {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+}

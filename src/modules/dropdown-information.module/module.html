@@ -1,0 +1,19 @@
+<div class="dropdown-information">
+    {% for item in module.items %}
+    <div class="dropdown-container" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <header class="clearfix">
+            <div itemprop="name">
+                {% text value="{{ item.title }}" %}
+            </div>
+            <span class="before animated"></span>
+            <span class="after animated"></span>
+        </header>
+        <article itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div class="article-inner" itemprop="text">
+                {{ item.description }}
+            </div>
+        </article>
+        <span class="line"></span>
+    </div>
+    {% endfor %}
+</div>

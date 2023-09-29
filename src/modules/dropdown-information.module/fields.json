@@ -1,0 +1,55 @@
+[
+    {
+        "name": "module_identity",
+        "label": "Module ID",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text"
+    },
+    {
+        "name": "items",
+        "label": "Items",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+            "min": 1,
+            "max": null,
+            "sorting_label_field": null,
+            "default": 3
+        },
+        "children": [
+            {
+                "name": "title",
+                "label": "Titre",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "Info"
+            },
+            {
+                "name": "description",
+                "label": "Description",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "<p>Découvrez les Perles de Saveurs au caramel, une nouveauté Christine Le Tennier ! Ces Perles de Saveurs vous accompagneront de l’apéritif au dessert, sublimant chacun de vos plats. Laissez parler votre imagination ! Vous pouvez déposer quelques Perles de Saveurs caramel sur une crème anglaise avec des œufs à la neige. Sublime sur une tarte aux pommes avec une boule de glace vanille !</p>"
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": []
+    }
+]

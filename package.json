@@ -7,7 +7,7 @@
   "license": "MIT",
   "env": {
     "dev": "mtg-dev-marin",
-    "prod": "mtg-dev-marin"
+    "prod": "globexplore"
   },
   "scripts": {
     "clean:dist": "rm -rf dist && mkdir dist ",
@@ -15,19 +15,19 @@
     "build:js": "webpack",
     "build:css": "gulp buildCss",
     "build:html": "gulp buildhtml",
-    "deploy-dev:css": "hs upload --overwrite --portal=$npm_package_env_dev dist/css/main.css boilerplate-mtg-hubspot/css/main.css",
-    "deploy-prod:css": "hs upload --overwrite --portal=$npm_package_env_prod dist/css/main.css boilerplate-mtg-hubspot/css/main.css",
-    "deploy-dev:js": "hs upload --overwrite --portal=$npm_package_env_dev dist/js/main.js boilerplate-mtg-hubspot/js/main.js",
-    "deploy-prod:js": "hs upload --overwrite --portal=$npm_package_env_prod dist/js/main.js boilerplate-mtg-hubspot/js/main.js",
+    "deploy-dev:css": "hs upload --overwrite --portal=$npm_package_env_dev dist/css/main.css globexplorer/css/main.css",
+    "deploy-prod:css": "hs upload --overwrite --portal=$npm_package_env_prod dist/css/main.css globexplorer/css/main.css",
+    "deploy-dev:js": "hs upload --overwrite --portal=$npm_package_env_dev dist/js/main.js globexplorer/js/main.js",
+    "deploy-prod:js": "hs upload --overwrite --portal=$npm_package_env_prod dist/js/main.js globexplorer/js/main.js",
     "watch:css": "gulp watch",
     "watch:js": "webpack --watch",
     "start": "concurrently \"yarn watch:css\" \"yarn watch:js\"",
     "hs:auth": "hs auth personalaccesskey",
-    "hs:sync-prod": " hs upload --overwrite --portal=$npm_package_env_prod dist boilerplate-mtg-hubspot",
-    "hs:sync-dev": " hs upload --overwrite --portal=$npm_package_env_dev dist boilerplate-mtg-hubspot",
+    "hs:sync-prod": " hs upload --overwrite --portal=$npm_package_env_prod dist globexplorer",
+    "hs:sync-dev": " hs upload --overwrite --portal=$npm_package_env_dev dist globexplorer",
     "hs:module": "yarn plop;",
-    "hs:watch-dev": "hs watch --portal=$npm_package_env_dev src/modules boilerplate-mtg-hubspot",
-    "hs:watch-prod": "hs watch --portal=$npm_package_env_prod src/modules boilerplate-mtg-hubspot",
+    "hs:watch-dev": "hs watch --portal=$npm_package_env_dev src/modules globexplorer",
+    "hs:watch-prod": "hs watch --portal=$npm_package_env_prod src/modules globexplorer",
     "deploy:prod": "yarn build && yarn hs:sync-prod",
     "deploy:dev": "yarn build && yarn hs:sync-dev"
   },

@@ -1,0 +1,26 @@
+<section id="{{module.module_identity}}"
+    class="products {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    {% if module.content_style.padding_choice=='custom' %}
+    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    {% endif %}>
+    <div class="container">
+        <div class="label grey">
+            {{module.label_value}}
+        </div>
+        <div class="items">
+            {% for item in module.items %}
+            <a href="{{item.url_field.href}}"
+                class="item {% if module.items|length == '2' || module.items|length == '4' %}even{% else %}odd{% endif %}">
+                <img class="fit-cover" loading='lazy' src='{{item.image_field.src}}' alt='{{item.image_field.alt}}'
+                    width='{{item.image_field.width}}' height='{{item.image_field.height}}' />
+                <div class="item-content">
+                    <div class="product-name">
+                        {{item.product_name}}
+                    </div>
+                    {{item.description}}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>

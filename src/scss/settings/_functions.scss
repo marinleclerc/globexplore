@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
 // COLORS
-$text-color1: #000;
-$text-color2: #ccc;
-$color1: #2954ff;
-$color2: #0bcca9;
-$color3: #ff6a40;
-$color4: #942bff;
+$text-color1: #262626;
+$text-color2: #FFFFFB;
+$color1: #121212;
+$color2: #857750;
+$color3: #E7E7E7;
+$color4: #999BA3;
+$color5: #FF003C;
 
 //FONTS
-$font1: 'DM Sans', sans-serif;
-$font2: 'Philosopher', sans-serif;
+$font1: 'Diphylleia', serif;
+$font2: 'Poppins', sans-serif;
 
 //SIZES BREAKPOINT
+$size0: 1340px;
 $size1: 1140px;
 $size2: 1080px;
 $size3: 768px;

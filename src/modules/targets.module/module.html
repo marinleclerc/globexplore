@@ -1,0 +1,107 @@
+<section id="{{module.module_identity}}"
+    class="targets {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    {% if module.content_style.padding_choice=='custom' %}
+    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    {% endif %}>
+    <div class="container">
+        <div class="desktop-wrapper">
+            <svg class="pattern" width="1208" height="931" viewBox="0 0 1208 931" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g opacity="0.075">
+                    <path
+                        d="M1116.05 612.714C1091.05 700.075 1011.25 762.891 902.139 793.695C793.043 824.495 654.798 823.233 513.284 782.548C371.77 741.863 253.873 669.484 177.647 585.404C101.408 501.31 66.9548 405.647 91.951 318.286C116.947 230.925 196.746 168.109 305.859 137.305C414.956 106.505 553.201 107.766 694.715 148.452C836.229 189.137 954.125 261.516 1030.35 345.596C1106.59 429.69 1141.04 525.353 1116.05 612.714Z"
+                        stroke="#FFFFFB" stroke-width="2" />
+                    <path
+                        d="M1129.36 377.227C1144.35 466.859 1099.33 558.006 1014.1 632.923C928.888 707.828 803.586 766.387 658.392 790.78C513.197 815.173 375.694 800.765 270.767 757.803C165.824 714.835 93.6171 643.382 78.6287 553.75C63.6403 464.117 108.657 372.97 193.888 298.053C279.104 223.148 404.406 164.589 549.6 140.196C694.795 115.804 832.298 130.212 937.225 173.173C1042.17 216.141 1114.37 287.594 1129.36 377.227Z"
+                        stroke="#FFFFFB" stroke-width="2" />
+                </g>
+            </svg>
+            <div class="top-wrapper">
+                {% for item in module.items %}
+                {% if loop.index < 3 %} <a href="{{item.button.url_field.href}}" class="item item-{{loop.index}}">
+                    <img class="fit-cover" loading='lazy' src='{{item.image.src}}' alt='{{item.image.alt}}'
+                        width='{{item.image.width}}' height='{{item.image.height}}' />
+                    <div class="name-item">
+                        {{item.item_name}}
+                    </div>
+                    <div class="btn secondary white">
+                        {{item.button.button_text}}
+                    </div>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+            </div>
+            <div class="medium-wrapper">
+                {% for item in module.items %}
+                {% if loop.index == 3 %} <a href="{{item.button.url_field.href}}" class="item item-{{loop.index}}">
+                    <img class="fit-cover" loading='lazy' src='{{item.image.src}}' alt='{{item.image.alt}}'
+                        width='{{item.image.width}}' height='{{item.image.height}}' />
+                    <div class="name-item">
+                        {{item.item_name}}
+                    </div>
+                    <div class="btn secondary white">
+                        {{item.button.button_text}}
+                    </div>
+                </a>
+                {% endif %}
+                {% endfor %}
+                <div class="content">
+                    <div class="label grey">
+                        {{module.label_value}}
+                    </div>
+                    <div class="title">
+                        {{module.title}}
+                    </div>
+                    <a href="{{module.button.url_field.href}}" class="btn secondary white">
+                        {{module.button.button_text}}
+                    </a>
+                </div>
+                {% for item in module.items %}
+                {% if loop.index == 4 %} <a href="{{item.button.url_field.href}}" class="item">
+                    <img class="fit-cover" loading='lazy' src='{{item.image.src}}' alt='{{item.image.alt}}'
+                        width='{{item.image.width}}' height='{{item.image.height}}' />
+                    <div class="name-item">
+                        {{item.item_name}}
+                    </div>
+                    <div class="btn secondary white">
+                        {{item.button.button_text}}
+                    </div>
+                </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="top-wrapper">
+                {% for item in module.items %}
+                {% if loop.index > 4 && loop.index < 7 %} <a href="{{item.button.url_field.href}}"
+                    class="item item-{{loop.index}}">
+                    <img class="fit-cover" loading='lazy' src='{{item.image.src}}' alt='{{item.image.alt}}'
+                        width='{{item.image.width}}' height='{{item.image.height}}' />
+                    <div class="name-item">
+                        {{item.item_name}}
+                    </div>
+                    <div class="btn secondary white">
+                        {{item.button.button_text}}
+                    </div>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+            </div>
+        </div>
+        <div class="responsive-wrapper">
+            <div class="swiper-wrapper">
+                {% for item in module.items %}
+                <a href="{{item.button.url_field.href}}" class="item item-{{loop.index}} swiper-slide">
+                    <img class="fit-cover" loading='lazy' src='{{item.image.src}}' alt='{{item.image.alt}}'
+                        width='{{item.image.width}}' height='{{item.image.height}}' />
+                    <div class="name-item">
+                        {{item.item_name}}
+                    </div>
+                    <div class="btn secondary white">
+                        {{item.button.button_text}}
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

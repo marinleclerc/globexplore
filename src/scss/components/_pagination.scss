@@ -2,46 +2,88 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 90px;
+
   .blog-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
+
     &__link {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 5px;
       text-decoration: none;
-      color: #fff;
-      background-color: $color1;
+      color: $color1;
+      border: 1px solid $text-color1;
       height: 50px;
       width: 50px;
-      opacity: 0.5;
-      border-radius: 4px;
+      border-radius: 50%;
+      background-color: transparent;
       transition: all 0.3s ease;
+
       &--active,
       &:hover {
-        opacity: 1;
+        background-color: $color1;
+        color: $text-color2;
       }
     }
   }
+
   .arrow {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: $color1;
+    border: 1px solid $text-color1;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 5px;
-    height: 50px;
-    width: 50px;
-    opacity: 0.5;
     transition: all 0.3s ease;
+
     &:hover {
-      opacity: 1;
+      background-color: $text-color1;
+
+      svg path {
+        fill: $text-color2;
+      }
     }
-    &.next {
-      transform: rotate(0);
-    }
+
     &.previous {
-      transform: rotate(-180deg);
+      margin-right: 30px;
+    }
+
+    &.next {
+      margin-left: 30px;
+    }
+  }
+
+  &.dark {
+    .blog-pagination {
+
+      &__link {
+        color: $text-color2;
+        border: 1px solid $text-color2;
+
+        &--active,
+        &:hover {
+          background-color: $text-color2;
+          color: $text-color1;
+        }
+      }
+    }
+
+    .arrow {
+      border: 1px solid $text-color2;
+
+      &:hover {
+        background-color: $text-color2;
+
+        svg path {
+          fill: $text-color1;
+        }
+      }
     }
   }
 }

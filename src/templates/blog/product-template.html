@@ -1,0 +1,15 @@
+<!--
+  templateType: blog
+  isAvailableForNewContent: true
+  label: Perles des saveurs - Produit
+-->
+{% extends '../layouts/base-catalogue.html' %}
+{% block body %}
+
+<div class="product-template">
+  {% module "module_16947698923862" path="/globexplorer/modules/product-single-hero", label="product-single-hero" %}
+</div>
+{% module "module_16947713283862" path="/globexplorer/modules/recipe-listing-select", label="recipe-listing-select",
+content_style='{"theme":
+"light", "section_type": "xl"}' %}
+{% endblock body %} 

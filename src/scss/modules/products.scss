@@ -1,0 +1,110 @@
+.products {
+    background-color: $color1;
+
+    .label {
+        margin-bottom: 60px;
+        text-align: center;
+    }
+
+    .items {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .item {
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-decoration: none;
+            transition: all 0.3s;
+
+            img {
+                transition: transform 0.3s;
+            }
+
+            &:hover {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+
+            &.hovered {
+                opacity: 0.4;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(180deg, rgba(18, 18, 18, 0.00) 0.57%, rgba(18, 18, 18, 0.85) 100%);
+            }
+
+            @media screen and (max-width: $size3) {
+                padding: 20px;
+            }
+
+            &.odd {
+                width: calc(100% / 3 - 15px);
+                aspect-ratio: 424 / 620;
+
+                @media screen and (max-width: $size3) {
+                    width: 100%;
+                    margin-top: 30px;
+                    aspect-ratio: 330 / 480;
+                }
+            }
+
+            &.even {
+                width: calc(100% / 2 - 15px);
+                aspect-ratio: 100 / 66;
+
+                &:nth-child(n+3) {
+                    margin-top: 30px;
+                }
+
+                @media screen and (max-width: $size3) {
+                    width: 100%;
+                    margin-top: 30px;
+                    aspect-ratio: 330 / 480;
+                }
+            }
+
+            .item-content {
+                position: relative;
+                z-index: 11;
+
+                .product-name {
+                    font-family: $font1;
+                    font-size: 44px;
+                    margin-bottom: 10px;
+                    line-height: 1.1;
+
+                    @media screen and (max-width: $size3) {
+                        font-size: 30px;
+                    }
+                }
+
+                p {
+                    margin-top: 0;
+                    margin-bottom: 0;
+
+                    @media screen and (max-width: $size3) {
+                        font-size: 15px;
+
+                    }
+                }
+
+                .product-name,
+                p {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

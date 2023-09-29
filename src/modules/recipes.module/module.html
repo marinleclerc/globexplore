@@ -1,0 +1,53 @@
+<section id="{{module.module_identity}}"
+    class="recipes {{module.content_style.theme}} {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    {% if module.content_style.padding_choice=='custom' %}
+    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    {% endif %}>
+    <div class="container">
+        <div class="label {% if module.content_style.theme == 'dark' %}grey{% else %}grey-second{% endif %}">
+            {{module.label_value}}
+        </div>
+        <div class="title">
+            {{module.title}}
+        </div>
+        <div class="recipes">
+            {% set rec_recipes = blog_recent_posts('module.blog_field', 3) %}
+            {% for recipe in rec_recipes %}
+            <div class="recipe-wrapper">
+                <div class="recipe">
+                    <a href="{{ recipe.absolute_url }}" class="featured-image">
+                        <div class="wrapper-image">
+                            <img class="fit-cover" loading='lazy' src='{{recipe.featured_image }}' alt='' width=''
+                                height='' />
+                        </div>
+                    </a>
+                    {% for tag in recipe.tag_list %}
+                    <a class="tag label grey" href="{{ blog_tag_url(group.id, tag.slug) }}">{{
+                        tag.name
+                        }}</a>
+                    {% endfor %}
+                    <div class="title-recipe">{{ recipe.name }}</div>
+                    <p class="description">Et tuiles d’encre de seiche</p>
+                    <div class="informations">
+                        <div class="information duration">
+                            1h
+                        </div>
+                        <div class="information people-number">
+                            6 pers.
+                        </div>
+                        <div class="information level">
+                            Facile
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if module.button.url_field.href != "" %}
+        <a href="{{module.button.url_field.href}}"
+            class="btn secondary {% if module.content_style.theme == 'dark' %}white{% else %}dark{% endif %}">
+            {{module.button.button_text}}
+        </a>
+        {% endif %}
+    </div>
+</section>

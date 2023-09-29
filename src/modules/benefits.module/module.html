@@ -1,0 +1,41 @@
+<section id="{{module.module_identity}}"
+    class="benefits {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    {% if module.content_style.padding_choice=='custom' %}
+    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    {% endif %}>
+    <div class="container">
+        <div class="title title-{{module.content_style.image_position}}">
+            {{module.title}}
+        </div>
+        <div class="wrapper image-{{module.content_style.image_position}}">
+            <div class="benefits-wrapper">
+                {% for item in module.items %}
+                {% if item.type == "richtext" %}
+                <div class="richtext">
+                    {{item.richtext_field}}
+                </div>
+                {% else %}
+                <div class="benefit">
+                    <div class="benefit-title">
+                        {{item.benefit_name}}
+                    </div> 
+                    <div class="benefit-description">
+                        {{item.benefit_description}}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <a href="{{module.button.url_field.href}}" class="btn secondary white">
+                    {{module.button.button_text}}
+                </a>
+            </div>
+            <div class="wrapper-img">
+                <div class="inner">
+                    <img class="fit-cover" loading='lazy' src='{{module.image_field.src}}'
+                        alt='{{module.image_field.alt}}' width='{{module.image_field.width}}'
+                        height='{{module.image_field.height}}' />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

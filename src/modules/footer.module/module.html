@@ -1,0 +1,33 @@
+<footer id="{{module.module_identity}}" class="footer">
+    <div class="container">
+        <div class="main-footer">
+            <div class="left-column">
+                <a href="{{module.logo.url_field.href}}">
+                    <img loading='lazy' src='{{module.logo.logo_src.src}}' alt='{{module.logo.logo_src.alt}}'
+                        width='{{module.logo.logo_src.width}}' height='{{module.logo.logo_src.height}}' />
+                </a>
+                {{module.description}}
+            </div>
+            {% for column in module.columns %}
+            <div class="column">
+                {% for item in column.items %}
+                <a href="{{item.link_field.href.url}}">
+                    {{item.text_field}}
+                </a>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="sub-footer">
+            <p>Copyright © {{year}} GlobeXplore</p>
+            <div class="items">
+                {% for item in module.sub_links %}
+                <a href="{{item.link_field.href.url}}">
+                    {{item.text_field}}
+                </a>
+                {% endfor %}
+            </div>
+            <p>Conçu par Make the Grade</p>
+        </div>
+    </div>
+</footer>

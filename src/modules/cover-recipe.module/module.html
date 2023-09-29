@@ -1,0 +1,26 @@
+<div id="{{module.module_identity}}"
+    class="cover-recipe {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    {% if module.content_style.padding_choice=='custom' %}
+    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    {% endif %}>
+    {% for item in module.items %}
+    <section>
+        <div class="inner">
+            <div class="img-wrapper">
+                <img class="fit-cover" loading='lazy' src='{{item.image.src}}' alt='{{item.image.alt}}'
+                    width='{{item.image.width}}' height='{{item.image.height}}' />
+                <div class="container {{item.text_position}}-position">
+                    <div class="text-wrapper">
+                        <div class="title">
+                            {{item.title_recipe}}
+                        </div>
+                        <div class="description">
+                            {{item.description}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+</div>

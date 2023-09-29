@@ -1,0 +1,155 @@
+.timeline {
+    background-color: $color1;
+    position: relative;
+    overflow: hidden;
+
+    .label,
+    .title {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .title {
+        * {
+            color: $text-color2;
+        }
+    }
+
+    .contents {
+        position: relative;
+        width: 100%;
+        //height: 600px;
+        margin-top: 145px;
+
+        @media screen and (max-width: $size2) {
+            margin-top: 90px;
+        }
+
+        @media screen and (max-width: $size3) {
+            margin-top: 60px;
+        }
+
+        .content {
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.3s;
+
+            &.active {
+                opacity: 1;
+            }
+
+            .img-wrapper {
+                width: calc(50% - 15px);
+                aspect-ratio: 650 / 345;
+                position: relative;
+                overflow: hidden;
+
+                @media screen and (max-width: $size3) {
+                    width: 100%;
+                    margin-bottom: 30px;
+                }
+            }
+
+            .informations {
+                width: calc(100% / 12 * 5 - 15px);
+
+                @media screen and (max-width: $size3) {
+                    width: 100%;
+                    margin-bottom: 30px;
+                }
+
+                .date {
+                    font-feature-settings: 'liga' off;
+                    font-family: $font1;
+                    font-size: 120px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 1;
+                    letter-spacing: 1.2px;
+                    color: transparent;
+                    /* Couleur du texte */
+                    -webkit-text-stroke: 1px #fff;
+                    /* Largeur de la bordure et couleur de la bordure */
+                    text-stroke: 1px #fff;
+
+                    @media screen and (max-width: $size2) {
+                        font-size: 90px;
+                    }
+
+                    +div {
+                        width: 330px;
+                        margin: 60px auto 0;
+                    }
+                }
+
+                .information-title,
+                .information-description {
+                    color: $text-color2;
+                }
+
+                .information-title {
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+
+    .dates-wrapper {
+        margin-top: 105px;
+        border-bottom: 1px solid $text-color2;
+
+        @media screen and (max-width: $size2) {
+            margin-top: 75px;
+        }
+
+        @media screen and (max-width: $size3) {
+            margin-top: 60px;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+
+            .date-picker {
+                position: relative;
+                width: auto;
+                font-size: 20px;
+                letter-spacing: 0.2px;
+                color: $text-color2;
+                opacity: 0.4;
+                padding-bottom: 45px;
+                cursor: pointer;
+                transition: opacity 0.3s;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 1px;
+                    height: 10px;
+                    background-color: $text-color2;
+                    transition: height 0.3s;
+                }
+
+                &:hover,
+                &.active {
+                    opacity: 1;
+
+                    &::after {
+                        height: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

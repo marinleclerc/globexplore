@@ -1,0 +1,57 @@
+.banner-cta {
+    .module-wrapper {
+        background-color: $color2;
+        padding: 110px 0;
+
+        @media screen and (max-width: $size2) {
+            padding: 75px 0;
+        }
+
+        .container {
+
+            >div {
+                width: calc(100% / 12 * 10 - 30px);
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                @media screen and (max-width: $size1) {
+                    width: 100%;
+                }
+
+                .left-wrapper {
+                    width: calc(100% / 10 * 7 - 15px);
+
+                    @media screen and (max-width: $size2) {
+                        width: 100%;
+                        margin-bottom: 45px;
+                    }
+
+
+                    .title {
+                        margin-bottom: 30px;
+                    }
+
+                    .title,
+                    .description * {
+                        color: $text-color2;
+                    }
+
+                    .description {
+                        * {
+                            &:first-child {
+                                margin-top: 0;
+                            }
+
+                            &:last-child {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

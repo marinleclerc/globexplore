@@ -1,0 +1,56 @@
+<section class="product-single-hero">
+    <div class="container">
+        <div class="product-detail">
+            <div class="wrapper-image">
+                <img loading="lazy" src="{{ module.image.src }}" alt="{{ module.image.alt }}"
+                    width="{{ module.image.width }}" height="{{ module.image.height }}">
+            </div>
+            <div class="product-informations">
+                <div>
+                    <h1 class="product-title">
+                        {{ module.title }}
+                    </h1>
+                    <div class="informations">
+                        <div class="information duration">
+                            1h
+                        </div>
+                        <div class="information people-number">
+                            6 pers.
+                        </div>
+                        <div class="information level">
+                            Facile
+                        </div>
+                    </div>
+                    <div class="dropdown-information">
+                        {% for item in module.items %}
+                        <div class="dropdown-container" itemscope itemprop="mainEntity"
+                            itemtype="https://schema.org/Question">
+                            <header class="clearfix">
+                                <div itemprop="name">
+                                    {% text value="{{ item.title }}" %}
+                                </div>
+                                <span class="before animated"></span>
+                                <span class="after animated"></span>
+                            </header>
+                            <article itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <div class="article-inner" itemprop="text">
+                                    {{ item.description }}
+                                </div>
+                            </article>
+                            <span class="line"></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="buttons">
+                        {% for button in module.buttons %}
+                        <a href="{{button.url_field.href}}"
+                            class="btn {% if button.button_type == 'primary' %}primary{% else %}secondary dark{% endif %}">
+                            {{button.button_text}}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

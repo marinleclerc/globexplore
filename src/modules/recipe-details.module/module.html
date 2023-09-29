@@ -1,0 +1,35 @@
+<section id="{{module.module_identity}}"
+    class="recipe-details {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    {% if module.content_style.padding_choice=='custom' %}
+    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    {% endif %}>
+    <div class="container">
+        <div class="ingredients">
+            <p class="label grey">
+                {{module.ingredients.title}}
+            </p>
+            <div class="items">
+                {% for item in module.ingredients.items %}
+                <div class="ingredient">
+                    {{item.item}}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="recipe-description">
+            {% for item in module.recipe %}
+            <div class="step">
+                <p class="label grey">
+                    Etape {{loop.index}}
+                </p>
+                <div class="step-name white">
+                    {{item.step_name}}
+                </div>
+                <div class="step-description">
+                    {{item.step_description}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

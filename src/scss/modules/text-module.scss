@@ -1,0 +1,20 @@
+.text-module {
+
+    .label,
+    .title {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    &.dark {
+        background-color: $color1;
+
+        .title * {
+            color: $text-color2;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+}

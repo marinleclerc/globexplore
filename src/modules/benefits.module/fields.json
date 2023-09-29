@@ -1,0 +1,340 @@
+[
+    {
+        "name": "module_identity",
+        "label": "Module ID",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text"
+    },
+    {
+        "type": "group",
+        "name": "content_style",
+        "label": "Content Style",
+        "children": [
+            {
+                "id": "padding_choice",
+                "name": "padding_choice",
+                "label": "Padding Choice",
+                "required": false,
+                "locked": false,
+                "display": "select",
+                "inline_help_text": "",
+                "help_text": "",
+                "choices": [
+                    [
+                        "classic",
+                        "Classic"
+                    ],
+                    [
+                        "custom",
+                        "Custom"
+                    ]
+                ],
+                "type": "choice",
+                "placeholder": "",
+                "default": "classic"
+            },
+            {
+                "name": "section_type",
+                "label": "Section Type",
+                "sortable": false,
+                "required": false,
+                "locked": false,
+                "display": "select",
+                "visibility": {
+                    "controlling_field": "padding_choice",
+                    "controlling_value_regex": "classic",
+                    "operator": "EQUAL"
+                },
+                "choices": [
+                    [
+                        "none",
+                        "None"
+                    ],
+                    [
+                        "sm",
+                        "Small"
+                    ],
+                    [
+                        "md",
+                        "Normal"
+                    ],
+                    [
+                        "lg",
+                        "Big"
+                    ],
+                    [
+                        "xl",
+                        "Giant"
+                    ]
+                ],
+                "type": "choice",
+                "default": "none"
+            },
+            {
+                "name": "padding_bottom",
+                "label": "Padding Bottom",
+                "sortable": false,
+                "required": false,
+                "locked": false,
+                "type": "boolean",
+                "default": true,
+                "visibility": {
+                    "controlling_field": "padding_choice",
+                    "controlling_value_regex": "classic",
+                    "operator": "EQUAL"
+                }
+            },
+            {
+                "name": "padding_top",
+                "label": "Padding Top",
+                "sortable": false,
+                "required": false,
+                "locked": false,
+                "type": "boolean",
+                "default": true,
+                "visibility": {
+                    "controlling_field": "padding_choice",
+                    "controlling_value_regex": "classic",
+                    "operator": "EQUAL"
+                }
+            },
+            {
+                "name": "custom_padding_top",
+                "label": "Padding Top",
+                "required": false,
+                "locked": false,
+                "display": "text",
+                "step": 1,
+                "type": "number",
+                "min": 0,
+                "max": null,
+                "inline_help_text": "",
+                "help_text": "",
+                "default": 0,
+                "visibility": {
+                    "controlling_field": "padding_choice",
+                    "controlling_value_regex": "custom",
+                    "operator": "EQUAL"
+                }
+            },
+            {
+                "name": "custom_padding_bottom",
+                "label": "Padding Bottom",
+                "required": false,
+                "locked": false,
+                "display": "text",
+                "step": 1,
+                "type": "number",
+                "min": 0,
+                "max": null,
+                "inline_help_text": "",
+                "help_text": "",
+                "default": 0,
+                "visibility": {
+                    "controlling_field": "padding_choice",
+                    "controlling_value_regex": "custom",
+                    "operator": "EQUAL"
+                }
+            },
+            {
+                "name": "image_position",
+                "label": "Position de l'image",
+                "required": false,
+                "locked": false,
+                "display": "select",
+                "inline_help_text": "",
+                "help_text": "",
+                "choices": [
+                    [
+                        "left",
+                        "Gauche"
+                    ],
+                    [
+                        "right",
+                        "Droite"
+                    ]
+                ],
+                "type": "choice",
+                "placeholder": "",
+                "default": "right"
+            }
+        ]
+    },
+    {
+        "name": "title",
+        "label": "Titre",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": "<h2>Vous êtes un industriel</h2>"
+    },
+    {
+        "name": "image_field",
+        "label": "Image",
+        "required": false,
+        "locked": false,
+        "inline_help_text": "",
+        "help_text": "",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": false,
+        "type": "image",
+        "default": {
+            "size_type": "auto",
+            "src": "https://via.placeholder.com/800",
+            "alt": null,
+            "loading": "disabled"
+        }
+    },
+    {
+        "name": "items",
+        "label": "Items",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+            "min": null,
+            "max": null,
+            "sorting_label_field": null,
+            "default": 3
+        },
+        "children": [
+            {
+                "id": "type",
+                "name": "type",
+                "label": "Content type",
+                "required": false,
+                "locked": false,
+                "display": "select",
+                "inline_help_text": "",
+                "help_text": "",
+                "choices": [
+                    [
+                        "richtext",
+                        "Richtext"
+                    ],
+                    [
+                        "benefit",
+                        "Bénéfice"
+                    ]
+                ],
+                "type": "choice",
+                "placeholder": "",
+                "default": "richtext"
+            },
+            {
+                "name": "richtext_field",
+                "label": "Richtext",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "inline_help_text": "",
+                "help_text": "",
+                "visibility": {
+                    "controlling_field": "type",
+                    "controlling_value_regex": "richtext",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "default": "<p>Your richtext</p>"
+            },
+            {
+                "name": "benefit_name",
+                "label": "Titre du bénéfice",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "visibility": {
+                    "controlling_field": "type",
+                    "controlling_value_regex": "benefit",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "default": "Bénéfice"
+            },
+            {
+                "name": "benefit_description",
+                "label": "Description",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "inline_help_text": "",
+                "help_text": "",
+                "visibility": {
+                    "controlling_field": "type",
+                    "controlling_value_regex": "benefit",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "default": "<p>Posuere fermentum odio ut sed ultrices velit. Dui mauris pellentesque eget nunc. Quis auctor diam quam et ut.</p>"
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": []
+    },
+    {
+        "name": "button",
+        "label": "Bouton",
+        "required": false,
+        "locked": false,
+        "children": [
+            {
+                "name": "button_text",
+                "label": "Texte du bouton",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "En savoir plus"
+            },
+            {
+                "name": "url_field",
+                "label": "URL",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "supported_types": [
+                    "EXTERNAL",
+                    "CONTENT",
+                    "FILE",
+                    "EMAIL_ADDRESS",
+                    "BLOG"
+                ],
+                "type": "url",
+                "default": {
+                    "content_id": null,
+                    "href": "/",
+                    "type": "EXTERNAL"
+                }
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {}
+    }
+]

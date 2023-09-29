@@ -1,0 +1,160 @@
+[
+    {
+        "name": "module_identity",
+        "label": "Module ID",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text"
+    },
+    {
+        "name": "title",
+        "label": "Titre",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "validation_error_message": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "placeholder": "",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": "Perles de Saveurs ® Caramel"
+    },
+    {
+        "name": "image",
+        "label": "Image",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": true,
+        "type": "image",
+        "default": {
+            "size_type": "auto",
+            "src": "https://via.placeholder.com/600",
+            "alt": "Example of an image used in your module"
+        }
+    },
+    {
+        "name": "items",
+        "label": "Informations",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+            "min": 1,
+            "max": null,
+            "sorting_label_field": null,
+            "default": 2
+        },
+        "children": [
+            {
+                "name": "title",
+                "label": "Titre",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "Info"
+            },
+            {
+                "name": "description",
+                "label": "Rich text field",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "<p>Découvrez les Perles de Saveurs au caramel, une nouveauté Christine Le Tennier ! Ces Perles de Saveurs vous accompagneront de l’apéritif au dessert, sublimant chacun de vos plats. Laissez parler votre imagination ! Vous pouvez déposer quelques Perles de Saveurs caramel sur une crème anglaise avec des œufs à la neige. Sublime sur une tarte aux pommes avec une boule de glace vanille !</p>"
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": []
+    },
+    {
+        "name": "buttons",
+        "label": "Boutons",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+            "min": null,
+            "max": null,
+            "sorting_label_field": null,
+            "default": null
+        },
+        "children": [
+            {
+                "name": "button_type",
+                "label": "Type de bouton",
+                "required": false,
+                "locked": false,
+                "display": "select",
+                "inline_help_text": "",
+                "help_text": "",
+                "choices": [
+                    [
+                        "primary",
+                        "Primaire"
+                    ],
+                    [
+                        "secondary",
+                        "Secondaire"
+                    ]
+                ],
+                "type": "choice",
+                "placeholder": "",
+                "default": "primary"
+            },
+            {
+                "name": "button_text",
+                "label": "Texte du bouton",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "En savoir plus"
+            },
+            {
+                "name": "url_field",
+                "label": "URL",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "supported_types": [
+                    "EXTERNAL",
+                    "CONTENT",
+                    "FILE",
+                    "EMAIL_ADDRESS",
+                    "BLOG"
+                ],
+                "type": "url",
+                "default": {
+                    "content_id": null,
+                    "href": "/",
+                    "type": "EXTERNAL"
+                }
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": []
+    }
+]

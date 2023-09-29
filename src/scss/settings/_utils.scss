@@ -21,10 +21,12 @@ img.fit-contain {
 figure,
 .figure {
   width: 100%;
+
   &.ratio {
     position: relative;
     padding-bottom: 56.25%;
     text-align: left;
+
     img,
     iframe {
       position: absolute;
@@ -38,4 +40,8 @@ figure,
 
 img:not([src]) {
   visibility: hidden;
+}
+
+.white {
+  color: #fffffb;
 }

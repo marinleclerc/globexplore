@@ -1,0 +1,43 @@
+{% set blog_post_ids = [] %}
+
+{% for item in module.products %}
+{% set post_id = item.page_field %} <!-- Supposons que vous récupériez l'ID de chaque article de blog -->
+{% set _ = blog_post_ids.append(post_id) %}
+{% endfor %}
+
+<section id="{{module.module_identity}}"
+    class="related-products {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    {% if module.content_style.padding_choice=='custom' %}
+    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    {% endif %}>
+    <div class="container">
+        <div class="label grey-second">
+            {{module.label_value}}
+        </div>
+        <div class="title">
+            {{module.title}}
+        </div>
+        <div
+            class="product-listing {% if blog_post_ids|length == 1 %}single{% elif blog_post_ids|length == 2 %}twice{% endif %}">
+            {% set contents = content_by_ids(blog_post_ids) %}
+
+            {% for product in contents %}
+            <a href="{{ product.absolute_url }}" class="product">
+                <div class="featured-image">
+                    <img src="{{ product.featured_image }}" alt="{{ product.name }}">
+                </div>
+                <div class="wrapper">
+                    <div class="title-product">{{ product.name }}</div>
+                    <div class="author">
+                        Par {{product.blog_post_author.display_name
+                        }}
+                    </div>
+                </div>
+                <div class="btn secondary dark">
+                    Voir en détails
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>

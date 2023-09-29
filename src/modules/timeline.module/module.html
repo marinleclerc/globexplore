@@ -1,0 +1,49 @@
+<section id="{{module.module_identity}}"
+    class="timeline {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    {% if module.content_style.padding_choice=='custom' %}
+    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    {% endif %}>
+    <div class="container">
+        <div class="label grey">
+            {{module.label_value}}
+        </div>
+        <div class="title">
+            {{module.title}}
+        </div>
+        <div class="timeline-wrapper">
+            <div class="contents">
+                {% for item in module.items %}
+                <div data-toggler="{{loop.index}}" class="content {% if loop.index == 1 %}active{% endif %}">
+                    <div class="img-wrapper">
+                        <img loading='lazy' class="fit-cover" src='{{item.image.src}}' alt='{{item.image.alt}}'
+                            width='{{item.image.width}}' height='{{item.image.height}}' />
+                    </div>
+                    <div class="informations">
+                        <div class="date">
+                            {{item.date}}
+                        </div>
+                        <div>
+                            <div class="information-title">
+                                {{item.item_title}}
+                            </div>
+                            <div class="information-description">
+                                {{item.description}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="dates-wrapper swiper-container">
+                <div class="swiper-wrapper">
+                    {% for item in module.items %}
+                    <div data-index="{{loop.index}}"
+                        class="date-picker swiper-slide {% if loop.index == 1 %}active{% endif %}">
+                        {{item.date}}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -23,4 +23,3 @@ jQuery( document ).ready(function() {
     
 })
 */
-console.log("après antoine");

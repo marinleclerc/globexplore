@@ -1,0 +1,172 @@
+[
+    {
+        "name": "module_identity",
+        "label": "Module ID",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text"
+    },
+    {
+        "name": "title",
+        "label": "Titre",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "validation_error_message": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "placeholder": "",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": "La gastronomie créative"
+    },
+    {
+        "name": "description",
+        "label": "description",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": "<p>Enim quam ultrices sit id sit. Enim viverra vel eu aenean auctor fringilla cras libero. Gravida mauris etiam vel risus. Tristique amet id libero et eget lacinia sagittis felis amet enim sociis.</p>"
+    },
+    {
+        "name": "image",
+        "label": "Image",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": true,
+        "type": "image",
+        "default": {
+            "size_type": "auto",
+            "src": "https://via.placeholder.com/600",
+            "alt": "Example of an image used in your module"
+        }
+    },
+    {
+        "name": "button_first",
+        "label": "Bouton",
+        "required": false,
+        "locked": false,
+        "children": [
+            {
+                "name": "button_text",
+                "label": "Texte du bouton",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "En savoir plus"
+            },
+            {
+                "name": "url_field",
+                "label": "URL",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "supported_types": [
+                    "EXTERNAL",
+                    "CONTENT",
+                    "FILE",
+                    "EMAIL_ADDRESS",
+                    "BLOG"
+                ],
+                "type": "url",
+                "default": {
+                    "content_id": null,
+                    "href": "/",
+                    "type": "EXTERNAL"
+                }
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {}
+    },
+    {
+        "name": "label_value",
+        "label": "Label",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "validation_error_message": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "placeholder": "",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": "les bénéfices de perles de saveurs"
+    },
+    {
+        "name": "featured_text",
+        "label": "Texte mis en avant",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": "<p>Proin id do savoureuses pulvinar. Integer etiam prêtes à l’emploi. Sed pharetra vitae esthétique.</p>"
+    },
+    {
+        "name": "button",
+        "label": "Bouton",
+        "required": false,
+        "locked": false,
+        "children": [
+            {
+                "name": "button_text",
+                "label": "Texte du bouton",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "En savoir plus"
+            },
+            {
+                "name": "url_field",
+                "label": "URL",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "supported_types": [
+                    "EXTERNAL",
+                    "CONTENT",
+                    "FILE",
+                    "EMAIL_ADDRESS",
+                    "BLOG"
+                ],
+                "type": "url",
+                "default": {
+                    "content_id": null,
+                    "href": "/",
+                    "type": "EXTERNAL"
+                }
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {}
+    }
+]
