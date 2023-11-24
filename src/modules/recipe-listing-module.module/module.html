@@ -1,0 +1,262 @@
+<section id="{{module.module_identity}}"
+    class="recipes dark {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    {% if module.content_style.padding_choice=='custom' %}
+    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    {% endif %}>
+    <div class="container">
+        <div class="tag-listing dark">
+            {% for tag in module.tags %}
+            <a class="tag" href="{{actual_url}}?tag={{tag.tag_value}}">
+                {{tag.tag_label}}
+            </a>
+            {% endfor %}
+        </div>
+
+        {% set actual_url = request.full_url %}
+        {% set items_per_page = module.number_field %}
+
+        {% if not request.query_dict.tag %}
+
+        {% set total_pages = (module.posts|length / items_per_page)|round(0, "ceil") %}
+        {% if total_items % items_per_page > 0 %}
+        {% set total_pages = total_pages|round(0, "ceil") + 1 %}
+        {% endif %}
+
+        {% set total_items = module.posts|length %}
+
+        {% if not request.query_dict.page %}
+        {% set current_page_num = 1 %}
+        {% elif request.query_dict.page %}
+        {% set current_page_num = request.query_dict.page %}
+        {% endif %}
+        {% set tag_request = null %}
+        {% set debut = (current_page_num - 1) * items_per_page %} {# Index du premier élément à afficher #}
+        {% set fin = debut + items_per_page %} {# Index du dernier élément à afficher #}
+
+        <div class="recipes dark">
+            {% for item in module.posts %}
+            {% if loop.index > debut && loop.index < fin + 1 %} <div class="recipe-wrapper">
+                <div class="recipe">
+                    {% set my_content = content_by_id(item.page_field) %}
+                    <a href="{{ my_content.absolute_url }}" class="featured-image">
+                        <div class="wrapper-image">
+                            <img class="fit-cover" loading='lazy' src='{{item.image_field.src }}' alt='' width=''
+                                height='' />
+                        </div>
+                    </a>
+                    <a class="tag label grey" href="{{actual_url}}?tag={{item.tag.tag_value}}">
+                        {{item.tag.tag_label}}
+                    </a>
+                    <div class="title-recipe">{{ item.post_title }}</div>
+                    <p class="description">{{item.description}}</p>
+                    <div class="informations">
+                        {% for information in item.informations %}
+                        <div class="information">
+                            {% if information.image_field.src %}
+                            <div class="icon-wrapper">
+                                <img loading='lazy' src='{{information.image_field.src}}'
+                                    alt='{{information.image_field.alt}}' width='{{information.image_field.width}}'
+                                    height='{{information.image_field.height}}' />
+                            </div>
+                            {% endif %}
+                            {{information.text_field}}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <!-- Pagination -->
+        {% if total_pages > 1 %}
+        <!-- parameters for the pagination -->
+        {% set range_num = 1 %}
+        {% set ellipsis = false %}
+        {% set hide_arrow = false %}
+        <nav class="container-blog-pagination dark">
+            {% if hide_arrow == false || (hide_arrow == true && last_page_num) %}
+            <a class="pagination-button prev{{ " disabled" if !last_page_num }}"
+                href="{{actual_url}}?page={{total_pages}}">
+                <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M5.39773 0.499999L6.27273 1.36364L2.67045 4.96591L12 4.96591L12 6.21591L2.67045 6.21591L6.27273 9.80682L5.39773 10.6818L0.306819 5.59091L5.39773 0.499999Z"
+                        fill="#121212" />
+                </svg>
+            </a>
+            {% endif %}
+            <div class="numbers-wrapper">
+                {% if current_page_num == 1 || current_page_num == total_pages %}
+                {% set range_num = range_num + 1 %}
+                {% endif %}
+                {% for page in range(0,total_pages) %}
+                {% if ellipsis == true %}
+                {% if current_page_num > 1 + range_num && loop.index == 1 %}
+                <a class="pagination-number" href="{{actual_url}}?page={{loop.index}}">{{ loop.index }}</a>
+                {% endif %}
+                {% if current_page_num > 1 + (range_num + 1) && loop.index == 1 %}
+                <p class="pagination-number ellipsis">...</p>
+                {% endif %}
+                {% endif %}
+                {% if (loop.index < current_page_num && loop.index>= current_page_num - range_num) || (loop.index >
+                    current_page_num && loop.index <= current_page_num + range_num) %} <a class="pagination-number"
+                        href="{{actual_url}}?page={{loop.index}}">{{ loop.index }}</a>
+                        {% elif loop.index == current_page_num %}
+                        <a class="pagination-number active" href="{{actual_url}}?page={{loop.index}}">{{ loop.index
+                            }}</a>
+                        {% endif %}
+                        {% if ellipsis == true %}
+                        {% if current_page_num < total_pages - (range_num + 1) && loop.index==total_pages %} <p
+                            class="pagination-number ellipsis">...</p>
+                            {% endif %}
+                            {% if current_page_num < total_pages - range_num && loop.index==total_pages %} <a
+                                class="pagination-number" href="{{actual_url}}?page={{loop.index}}">{{ loop.index }}</a>
+                                {% endif %}
+                                {% endif %}
+                                {% endfor %}
+            </div>
+            {% if hide_arrow == false || (hide_arrow == true && next_page_num) %}
+            <a class="pagination-button next{{ " disabled" if !next_page_num }}"
+                href="{{ blog_page_link(next_page_num) }}">
+                <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6.60227 10.5L5.72727 9.63636L9.32955 6.03409H0V4.78409H9.32955L5.72727 1.19318L6.60227 0.318182L11.6932 5.40909L6.60227 10.5Z"
+                        fill="#121212" />
+                </svg>
+            </a>
+            {% endif %}
+        </nav>
+        {% endif %}
+
+        {% elif request.query_dict.tag %}
+
+        {% set tag_request = request.query_dict.tag %}
+        {% set new_posts = [] %}
+
+        {% for post in module.posts %}
+        {% if post.tag_value == tag_request %}
+        {% do new_posts.append(post) %}
+        {% endif %}
+        {% endfor %}
+
+        {% set total_pages = (new_posts|length / items_per_page)|round(0, "ceil") %}
+        {% if total_items % items_per_page > 0 %}
+        {% set total_pages = total_pages|round(0, "ceil") + 1 %}
+        {% endif %}
+
+
+        {% set total_items = module.new_posts|length %}
+
+
+        {% if not request.query_dict.page %}
+        {% set current_page_num = 1 %}
+        {% elif request.query_dict.page %}
+        {% set current_page_num = request.query_dict.page %}
+        {% endif %}
+
+        {% set debut = (current_page_num - 1) * items_per_page %}{# Index du premier élément à afficher #}
+        {% set fin = debut + items_per_page %}
+
+        <div class="listing">
+            {% for item in new_posts %}
+            {% if loop.index > debut && loop.index < fin + 1 %} <div class="recipe-wrapper">
+                <div class="recipe">
+                    {% set my_content = content_by_id(item.page_field) %}
+                    <a href="{{ my_content.absolute_url }}" class="featured-image">
+                        <div class="wrapper-image">
+                            <img class="fit-cover" loading='lazy' src='{{item.image_field.src }}' alt='' width=''
+                                height='' />
+                        </div>
+                    </a>
+                    <a class="tag label grey" href="{{actual_url}}?tag={{item.tag.tag_value}}">{{
+                        item.tag.tag_label
+                        }}</a>
+                    <div class="title-recipe">{{ item.post_title }}</div>
+                    <p class="description">{{item.description}}</p>
+                    <div class="informations">
+                        {% for information in item.informations %}
+                        <div class="information">
+                            {% if information.image_field.src %}
+                            <div class="icon-wrapper">
+                                <img loading='lazy' src='{{information.image_field.src}}'
+                                    alt='{{information.image_field.alt}}' width='{{information.image_field.width}}'
+                                    height='{{information.image_field.height}}' />
+                            </div>
+                            {% endif %}
+                            {{information.text_field}}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <!-- Pagination -->
+        {% if total_pages > 1 %}
+        <!-- parameters for the pagination -->
+        {% set range_num = 1 %}
+        {% set ellipsis = false %}
+        {% set hide_arrow = false %}
+        <nav class="container-blog-pagination dark">
+            {% if hide_arrow == false || (hide_arrow == true && last_page_num) %}
+            <a class="pagination-button prev{{ " disabled" if !last_page_num }}"
+                href="{{actual_url}}?tag={{tag_request}}&page={{total_pages}}">
+                <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M5.39773 0.499999L6.27273 1.36364L2.67045 4.96591L12 4.96591L12 6.21591L2.67045 6.21591L6.27273 9.80682L5.39773 10.6818L0.306819 5.59091L5.39773 0.499999Z"
+                        fill="#121212" />
+                </svg>
+            </a>
+            {% endif %}
+            <div class="numbers-wrapper">
+                {% if current_page_num == 1 || current_page_num == total_pages %}
+                {% set range_num = range_num + 1 %}
+                {% endif %}
+                {% for page in range(0,total_pages) %}
+                {% if ellipsis == true %}
+                {% if current_page_num > 1 + range_num && loop.index == 1 %}
+                <a class="pagination-number" href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{ loop.index
+                    }}</a>
+                {% endif %}
+                {% if current_page_num > 1 + (range_num + 1) && loop.index == 1 %}
+                <p class="pagination-number ellipsis">...</p>
+                {% endif %}
+                {% endif %}
+                {% if (loop.index < current_page_num && loop.index>= current_page_num - range_num) || (loop.index >
+                    current_page_num && loop.index <= current_page_num + range_num) %} <a class="pagination-number"
+                        href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{ loop.index }}</a>
+                        {% elif loop.index == current_page_num %}
+                        <a class="pagination-number active"
+                            href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{ loop.index
+                            }}</a>
+                        {% endif %}
+                        {% if ellipsis == true %}
+                        {% if current_page_num < total_pages - (range_num + 1) && loop.index==total_pages %} <p
+                            class="pagination-number ellipsis">...</p>
+                            {% endif %}
+                            {% if current_page_num < total_pages - range_num && loop.index==total_pages %} <a
+                                class="pagination-number" href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">
+                                {{ loop.index }}</a>
+                                {% endif %}
+                                {% endif %}
+                                {% endfor %}
+            </div>
+            {% if hide_arrow == false || (hide_arrow == true && next_page_num) %}
+            <a class="pagination-button next{{ " disabled" if !next_page_num }}"
+                href="{{ blog_page_link(next_page_num) }}">
+                <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6.60227 10.5L5.72727 9.63636L9.32955 6.03409H0V4.78409H9.32955L5.72727 1.19318L6.60227 0.318182L11.6932 5.40909L6.60227 10.5Z"
+                        fill="#121212" />
+                </svg>
+            </a>
+            {% endif %}
+        </nav>
+        {% endif %}
+
+        {% endif %}
+
+    </div>
+    </div>
+</section>

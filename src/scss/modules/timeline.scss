@@ -2,6 +2,13 @@
     background-color: $color1;
     position: relative;
     overflow: hidden;
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+
+    @media screen and (max-width: 767px) {
+        padding-top: calc(var(--pt) / 2);
+        padding-bottom: calc(var(--pb) / 2);
+    }
 
     .label,
     .title {

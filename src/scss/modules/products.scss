@@ -1,9 +1,20 @@
 .products {
     background-color: $color1;
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+
+    @media screen and (max-width: 767px) {
+        padding-top: calc(var(--pt) / 2);
+        padding-bottom: calc(var(--pb) / 2);
+    }
 
     .label {
         margin-bottom: 60px;
         text-align: center;
+
+        @media screen and (max-width: $size3) {
+            margin-bottom: 0;
+        }
     }
 
     .items {
@@ -42,7 +53,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: linear-gradient(180deg, rgba(18, 18, 18, 0.00) 0.57%, rgba(18, 18, 18, 0.85) 100%);
+                background: linear-gradient(180deg, rgba(18, 18, 18, 0.00) 0.57%, rgba(18, 18, 18, 0.95) 100%);
             }
 
             @media screen and (max-width: $size3) {

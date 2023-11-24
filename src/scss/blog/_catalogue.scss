@@ -3,6 +3,17 @@
     overflow: hidden;
     padding-bottom: 180px;
 
+    .tag-listing-template {
+        padding-top: 210px;
+
+        .label,
+        h1 {
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
     .catalogue {
 
         .label,

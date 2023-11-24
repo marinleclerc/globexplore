@@ -1,7 +1,7 @@
 <section id="{{module.module_identity}}"
     class="recipes {{module.content_style.theme}} {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
     {% if module.content_style.padding_choice=='custom' %}
-    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    style="--pt:{{ module.content_style.custom_padding_top }}px; --pb:{{ module.content_style.custom_padding_bottom }}px;"
     {% endif %}>
     <div class="container">
         <div class="label {% if module.content_style.theme == 'dark' %}grey{% else %}grey-second{% endif %}">
@@ -10,8 +10,14 @@
         <div class="title">
             {{module.title}}
         </div>
-        <div class="recipes">
-            {% set rec_recipes = blog_recent_posts('module.blog_field', 3) %}
+        {% set rec_recipes = blog_recent_posts(module.blog_field, 3) %}
+
+        {% set target_module_id = "79673321664" %}
+        {# {% set target_module_id = "136580095548" %} #}
+
+
+
+        <div class="recipes length-{{rec_recipes|length}}">
             {% for recipe in rec_recipes %}
             <div class="recipe-wrapper">
                 <div class="recipe">
@@ -22,22 +28,40 @@
                         </div>
                     </a>
                     {% for tag in recipe.tag_list %}
-                    <a class="tag label grey" href="{{ blog_tag_url(group.id, tag.slug) }}">{{
+                    <a class="tag label {% if module.content_style.theme == 'dark' %}grey{% else %}grey-second{% endif %}"
+                        href="{{ blog_tag_url(group.id, tag.slug) }}">{{
                         tag.name
                         }}</a>
                     {% endfor %}
                     <div class="title-recipe">{{ recipe.name }}</div>
-                    <p class="description">Et tuiles d’encre de seiche</p>
+                    {% for widget in my_content.allWidgets %}
+                    {% if widget.type == "module" and widget.module_id == target_module_id %}
+                    {% set target_module = widget %}
+                    <div class="description white-a">
+                        {{target_module.body.description}}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
                     <div class="informations">
-                        <div class="information duration">
-                            1h
+                        {% for widget in recipe.allWidgets %}
+                        {% if widget.type == "module" and widget.module_id == target_module_id %}
+                        {% set target_module = widget %}
+                        {% for item in target_module.body.sub_informations %}
+                        <div class="information">
+                            {% if item.image_field.src %}
+                            <div class="icon-wrapper">
+                                <img loading='lazy' src='{{item.image_field.src}}' alt='{{item.image_field.alt}}'
+                                    width='{{item.image_field.width}}' height='{{item.image_field.height}}' />
+                            </div>
+                            {% endif %}
+                            <span>
+                                {{item.text_field}}
+                            </span>
                         </div>
-                        <div class="information people-number">
-                            6 pers.
-                        </div>
-                        <div class="information level">
-                            Facile
-                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>

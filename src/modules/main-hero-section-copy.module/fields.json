@@ -70,25 +70,19 @@
                 "default": "En savoir plus"
             },
             {
-                "name": "url_field",
-                "label": "URL",
+                "name": "target_id",
+                "label": "ID de l'élément ciblé",
                 "required": false,
                 "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
                 "inline_help_text": "",
                 "help_text": "",
-                "supported_types": [
-                    "EXTERNAL",
-                    "CONTENT",
-                    "FILE",
-                    "EMAIL_ADDRESS",
-                    "BLOG"
-                ],
-                "type": "url",
-                "default": {
-                    "content_id": null,
-                    "href": "/",
-                    "type": "EXTERNAL"
-                }
+                "default": "second-content"
             }
         ],
         "type": "group",

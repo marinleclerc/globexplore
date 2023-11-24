@@ -5,21 +5,59 @@
 -->
 
 <!-- End of HubSpot code snippet -->
-{% extends "../layouts/base-catalogue.html" %}
+{% extends "../layouts/base.html" %}
 {% block body %}
+{% module "module_17005813307071" path="/globexplorer/modules/navigation", label="navigation" %}
 {# {% module "module_16181303503753" path="/padok/modules/header", label="header" %} #}
 <div class="catalogue-template">
     {% if blog_author %}
     {# Author Block Listing - You can manage it here #}
     {% elif tag %}
-    {# Tag Listing - You can manage it here #}
+    <div class="tag-listing-template">
+        {# Tag Listing - You can manage it here #}
+        <div class="label">
+            Tag
+        </div>
+        <h1>
+            {{ page_meta.html_title|split(' | ')|last }}
+        </h1>
+        <section id="{{module.module_identity}}" class="catalogue">
+            <div class="container">
+                <div class="tag-listing">
+                    {% for tag in blog_tags('default', 250) %}
+                    <a class="tag{% if tag.name|lower|replace(' ', '-') == tag_control %} active{% endif %}"
+                        href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+                <div class="listing">
+                    {% for product in contents %}
+                    <a href="{{ product.absolute_url }}" class="product">
+                        <div class="featured-image">
+                            <img src="{{ product.featured_image }}" alt="{{ product.name }}">
+                        </div>
+                        <div class="wrapper">
+                            <div class="title-product">{{ product.name }}</div>
+                            {# <div class="author">
+                                Par {{product.blog_post_author.display_name
+                                }}
+                            </div> #}
+                        </div>
+                        <div class="btn secondary dark">
+                            Voir en détails
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
     {% else %}
     <!--Classic Listing - You can manage it here -->
     {% module "module_16932173756371" path="/globexplorer/modules/hero-section", label="hero-section" %}
     {% module "module_16950282307011" path="/globexplorer/modules/text-icon", label="text-icon" %}
     {% module "module_16932173886012" path="/globexplorer/modules/cover-recipe", label="cover-recipe" %}
     {% module "module_16932248485891" path="/globexplorer/modules/text-module", label="text-module" %}
-    <section id="{{module.module_identity}}" class="catalogue">
+    <section id="catalogue" class="catalogue">
         <div class="container">
             <div class="tag-listing">
                 {% for tag in blog_tags('default', 250) %}
@@ -35,10 +73,10 @@
                     </div>
                     <div class="wrapper">
                         <div class="title-product">{{ product.name }}</div>
-                        <div class="author">
+                        {# <div class="author">
                             Par {{product.blog_post_author.display_name
                             }}
-                        </div>
+                        </div> #}
                     </div>
                     <div class="btn secondary dark">
                         Voir en détails

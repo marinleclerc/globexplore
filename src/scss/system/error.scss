@@ -1,15 +1,19 @@
-section.error-page{
-    padding:250px 0px;
-    div.container{
-        display:flex;
+section.error-page {
+    padding: 250px 0px;
+
+    div.container {
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        h1{
-            color:$color1;
+
+        h1 {
+            color: $color1;
             text-align: center;
+            margin-bottom: 45px;
         }
-        p{
+
+        p {
             text-align: center;
         }
     }

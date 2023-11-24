@@ -1,8 +1,12 @@
 <header id="{{module.module_identity}}" class="navigation">
     <div class="container">
         <a href="{{module.logo.url_field.href}}" class="logo">
-            <img loading='lazy' src='{{module.logo.image_field.src}}' alt='{{module.logo.image_field.alt}}'
-                width='{{module.logo.image_field.width}}' height='{{module.logo.image_field.height}}' />
+            <img class="light-logo" loading='lazy' src='{{module.logo.image_field.src}}'
+                alt='{{module.logo.image_field.alt}}' width='{{module.logo.image_field.width}}'
+                height='{{module.logo.image_field.height}}' />
+            <img class="dark-logo" loading='lazy' src='{{module.logo.image_field_dark.src}}'
+                alt='{{module.logo.image_field_dark.alt}}' width='{{module.logo.image_field_dark.width}}'
+                height='{{module.logo.image_field_dark.height}}' />
         </a>
         <button id="toggler-nav" class="toggler">
             <span></span>

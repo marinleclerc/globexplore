@@ -4,7 +4,7 @@ jQuery(document).ready(function () {
     if (headers && headers.length > 0) {
 
         for (var i = 0; i < headers.length; i++) {
-            headers[i].addEventListener('click', openAccordion);
+            headers[i].addEventListener('click', openCurrAccordion);
         }
 
     }

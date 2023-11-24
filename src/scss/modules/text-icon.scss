@@ -1,5 +1,12 @@
 .text-icons {
     background-color: $color1;
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+
+    @media screen and (max-width: 767px) {
+        padding-top: calc(var(--pt) / 2);
+        padding-bottom: calc(var(--pb) / 2);
+    }
 
     .label,
     .title {
@@ -11,6 +18,12 @@
         color: $text-color2;
     }
 
+    @media screen and (max-width: $size2) {
+        .title * {
+            margin: 0;
+        }
+    }
+
     .items {
         display: flex;
         justify-content: space-between;
@@ -18,6 +31,8 @@
         margin-top: 60px;
 
         @media screen and (max-width: $size2) {
+            margin-top: 0;
+
             .item {
                 width: calc(50% - 40px);
             }
@@ -26,7 +41,7 @@
         @media screen and (max-width: $size3) {
             .item {
                 width: 100%;
-                margin: 60px 0 0;
+                margin: 75px 0 0;
             }
         }
     }

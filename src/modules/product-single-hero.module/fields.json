@@ -25,6 +25,29 @@
         "default": "Perles de Saveurs ® Caramel"
     },
     {
+        "id": "media_type",
+        "name": "media_type",
+        "label": "Type de média",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "inline_help_text": "",
+        "help_text": "",
+        "choices": [
+            [
+                "image",
+                "Image"
+            ],
+            [
+                "slider",
+                "Slider d'image"
+            ]
+        ],
+        "type": "choice",
+        "placeholder": "",
+        "default": "image"
+    },
+    {
         "name": "image",
         "label": "Image",
         "required": false,
@@ -32,11 +55,167 @@
         "responsive": true,
         "resizable": true,
         "type": "image",
+        "visibility": {
+            "controlling_field": "media_type",
+            "controlling_value_regex": "image",
+            "operator": "EQUAL",
+            "access": null,
+            "hidden_subfields": null
+        },
         "default": {
             "size_type": "auto",
             "src": "https://via.placeholder.com/600",
             "alt": "Example of an image used in your module"
         }
+    },
+    {
+        "name": "images",
+        "label": "Images",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+            "min": null,
+            "max": null,
+            "sorting_label_field": null,
+            "default": null
+        },
+        "children": [
+            {
+                "name": "image_field",
+                "label": "Image",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "size_type": "auto",
+                    "src": "https://via.placeholder.com/600",
+                    "alt": null,
+                    "loading": "disabled"
+                }
+            }
+        ],
+        "type": "group",
+        "visibility": {
+            "controlling_field": "media_type",
+            "controlling_value_regex": "slider",
+            "operator": "EQUAL",
+            "access": null,
+            "hidden_subfields": null
+        },
+        "inline_help_text": "",
+        "help_text": "",
+        "default": []
+    },
+    {
+        "name": "controllers",
+        "label": "Controllers",
+        "required": false,
+        "locked": false,
+        "children": [
+            {
+                "id": "controller_type",
+                "name": "controller_type",
+                "label": "Controller type",
+                "required": false,
+                "locked": false,
+                "display": "select",
+                "inline_help_text": "",
+                "help_text": "",
+                "choices": [
+                    [
+                        "classic",
+                        "Classique"
+                    ],
+                    [
+                        "custom",
+                        "Custom"
+                    ]
+                ],
+                "type": "choice",
+                "placeholder": "",
+                "default": "classic"
+            },
+            {
+                "name": "field_color",
+                "label": "Couleur",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "type": "color",
+                "visibility": {
+                    "controlling_field": "controller_type",
+                    "controlling_value_regex": "custom",
+                    "operator": "EQUAL",
+                    "access": null,
+                    "hidden_subfields": null
+                },
+                "default": {
+                    "color": "#ffffff",
+                    "opacity": 100
+                }
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {}
+    },
+    {
+        "name": "sub_informations",
+        "label": "Informations",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+            "min": null,
+            "max": null,
+            "sorting_label_field": null,
+            "default": 3
+        },
+        "children": [
+            {
+                "name": "text_field",
+                "label": "Texte",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "1h"
+            },
+            {
+                "name": "image_field",
+                "label": "Image",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "size_type": "auto",
+                    "src": "https://via.placeholder.com/15",
+                    "alt": null,
+                    "loading": "disabled"
+                }
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": []
     },
     {
         "name": "items",
@@ -109,6 +288,10 @@
                     [
                         "secondary",
                         "Secondaire"
+                    ],
+                    [
+                        "tertiary",
+                        "Tertiaire"
                     ]
                 ],
                 "type": "choice",

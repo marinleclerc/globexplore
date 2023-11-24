@@ -1,15 +1,18 @@
 .container-blog-pagination {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 90px;
 
-  .blog-pagination {
+  .blog-pagination,
+  .numbers-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    &__link {
+    &__link,
+    .pagination-number {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -23,6 +26,7 @@
       transition: all 0.3s ease;
 
       &--active,
+      &.active,
       &:hover {
         background-color: $color1;
         color: $text-color2;
@@ -30,7 +34,8 @@
     }
   }
 
-  .arrow {
+  .arrow,
+  .pagination-button {
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -60,13 +65,17 @@
   }
 
   &.dark {
-    .blog-pagination {
 
-      &__link {
+    .blog-pagination,
+    .numbers-wrapper {
+
+      &__link,
+      .pagination-number {
         color: $text-color2;
         border: 1px solid $text-color2;
 
         &--active,
+        &.active,
         &:hover {
           background-color: $text-color2;
           color: $text-color1;
@@ -74,8 +83,13 @@
       }
     }
 
-    .arrow {
+    .arrow,
+    .pagination-button {
       border: 1px solid $text-color2;
+
+      svg path {
+        fill: $text-color2;
+      }
 
       &:hover {
         background-color: $text-color2;

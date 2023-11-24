@@ -143,14 +143,34 @@
         ]
     },
     {
-        "name": "ingredients",
-        "label": "Ingrédients",
+        "name": "number_field",
+        "label": "Nombre de recettes par page",
         "required": false,
         "locked": false,
+        "display": "text",
+        "step": 1,
+        "type": "number",
+        "min": null,
+        "max": null,
+        "inline_help_text": "",
+        "help_text": "",
+        "default": 6
+    },
+    {
+        "name": "tags",
+        "label": "Tags",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+            "min": null,
+            "max": null,
+            "sorting_label_field": null,
+            "default": 4
+        },
         "children": [
             {
-                "name": "title",
-                "label": "Titre",
+                "name": "tag_label",
+                "label": "Tag label",
                 "required": false,
                 "locked": false,
                 "validation_regex": "",
@@ -161,11 +181,11 @@
                 "placeholder": "",
                 "inline_help_text": "",
                 "help_text": "",
-                "default": "liste des ingrédients"
+                "default": "News"
             },
             {
-                "name": "sub_title",
-                "label": "Sous-titre",
+                "name": "tag_value",
+                "label": "Valeur du tag",
                 "required": false,
                 "locked": false,
                 "validation_regex": "",
@@ -176,113 +196,70 @@
                 "placeholder": "",
                 "inline_help_text": "",
                 "help_text": "",
-                "default": ""
-            },
-            {
-                "name": "items",
-                "label": "Ingrédients",
-                "required": false,
-                "locked": false,
-                "occurrence": {
-                    "min": 1,
-                    "max": null,
-                    "sorting_label_field": null,
-                    "default": 5
-                },
-                "children": [
-                    {
-                        "id": "item_type",
-                        "name": "item_type",
-                        "label": "Item type",
-                        "required": false,
-                        "locked": false,
-                        "display": "select",
-                        "inline_help_text": "",
-                        "help_text": "",
-                        "choices": [
-                            [
-                                "first",
-                                "Ingrédient"
-                            ],
-                            [
-                                "second",
-                                "Sous-titre"
-                            ]
-                        ],
-                        "type": "choice",
-                        "placeholder": "",
-                        "default": "first"
-                    },
-                    {
-                        "name": "item",
-                        "label": "Ingrédient",
-                        "required": false,
-                        "locked": false,
-                        "validation_regex": "",
-                        "validation_error_message": "",
-                        "allow_new_line": false,
-                        "show_emoji_picker": false,
-                        "type": "text",
-                        "placeholder": "",
-                        "inline_help_text": "",
-                        "help_text": "",
-                        "visibility": {
-                            "controlling_field": "item_type",
-                            "controlling_value_regex": "first",
-                            "operator": "EQUAL",
-                            "access": null,
-                            "hidden_subfields": null
-                        },
-                        "default": "18 noix de St Jacques"
-                    },
-                    {
-                        "name": "sub_title",
-                        "label": "Sous-titre",
-                        "required": false,
-                        "locked": false,
-                        "validation_regex": "",
-                        "validation_error_message": "",
-                        "allow_new_line": false,
-                        "show_emoji_picker": false,
-                        "type": "text",
-                        "placeholder": "",
-                        "inline_help_text": "",
-                        "help_text": "",
-                        "visibility": {
-                            "controlling_field": "item_type",
-                            "controlling_value_regex": "second",
-                            "operator": "EQUAL",
-                            "access": null,
-                            "hidden_subfields": null
-                        },
-                        "default": "Sous-titre"
-                    }
-                ],
-                "type": "group",
-                "inline_help_text": "",
-                "help_text": "",
-                "default": []
+                "default": "news"
             }
         ],
         "type": "group",
         "inline_help_text": "",
         "help_text": "",
-        "default": {}
+        "default": []
     },
     {
-        "name": "recipe",
-        "label": "Recette",
+        "name": "posts",
+        "label": "Recettes",
         "required": false,
         "locked": false,
         "occurrence": {
             "min": 1,
             "max": null,
             "sorting_label_field": null,
-            "default": 5
+            "default": 6
         },
         "children": [
             {
-                "name": "step_name",
+                "name": "tag",
+                "label": "Tag",
+                "required": false,
+                "locked": false,
+                "children": [
+                    {
+                        "name": "tag_label",
+                        "label": "Tag label",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "validation_error_message": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "placeholder": "",
+                        "inline_help_text": "",
+                        "help_text": "",
+                        "default": "News"
+                    },
+                    {
+                        "name": "tag_value",
+                        "label": "Valeur du tag",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "validation_error_message": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "placeholder": "",
+                        "inline_help_text": "Reprendre la valeur du Tag label sans les accents et espaces.",
+                        "help_text": "",
+                        "default": "news"
+                    }
+                ],
+                "type": "group",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": {}
+            },
+            {
+                "name": "post_title",
                 "label": "Titre",
                 "required": false,
                 "locked": false,
@@ -294,17 +271,102 @@
                 "placeholder": "",
                 "inline_help_text": "",
                 "help_text": "",
-                "default": "Préparation des tuiles à l’encre de seiche"
+                "default": "Noix St Jacques, sabayon au krill"
             },
             {
-                "name": "step_description",
+                "name": "description",
                 "label": "Description",
                 "required": false,
                 "locked": false,
-                "type": "richtext",
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
                 "inline_help_text": "",
                 "help_text": "",
-                "default": "<p>Cuire rapidement et sur feu vif les noix de st Jacques avec un filet d’huile d’olive et les 30 g de beurre. Assaisonner.</p>"
+                "default": "Et tuiles d’encre de seiche"
+            },
+            {
+                "name": "image_field",
+                "label": "Image",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "size_type": "auto",
+                    "src": "https://via.placeholder.com/600",
+                    "alt": null,
+                    "loading": "disabled"
+                }
+            },
+            {
+                "name": "page_field",
+                "label": "Page",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "type": "page",
+                "placeholder": "",
+                "default": null
+            },
+            {
+                "name": "informations",
+                "label": "Informations",
+                "required": false,
+                "locked": false,
+                "occurrence": {
+                    "min": null,
+                    "max": null,
+                    "sorting_label_field": null,
+                    "default": 2
+                },
+                "children": [
+                    {
+                        "name": "text_field",
+                        "label": "Texte",
+                        "required": false,
+                        "locked": false,
+                        "validation_regex": "",
+                        "validation_error_message": "",
+                        "allow_new_line": false,
+                        "show_emoji_picker": false,
+                        "type": "text",
+                        "placeholder": "",
+                        "inline_help_text": "",
+                        "help_text": "",
+                        "default": "6 pers."
+                    },
+                    {
+                        "name": "icon_field",
+                        "label": "Image",
+                        "required": false,
+                        "locked": false,
+                        "inline_help_text": "",
+                        "help_text": "",
+                        "responsive": true,
+                        "resizable": true,
+                        "show_loading": false,
+                        "type": "image",
+                        "default": {
+                            "size_type": "auto",
+                            "src": "https://via.placeholder.com/15",
+                            "alt": null,
+                            "loading": "disabled"
+                        }
+                    }
+                ],
+                "type": "group",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": []
             }
         ],
         "type": "group",

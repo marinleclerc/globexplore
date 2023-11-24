@@ -1,7 +1,7 @@
 {% set blog_post_ids = [] %}
 
 {% for item in module.items %}
-{% set post_id = item.page_field %} <!-- Supposons que vous récupériez l'ID de chaque article de blog -->
+{% set post_id = item.page_field %}
 {% set _ = blog_post_ids.append(post_id) %}
 {% endfor %}
 
@@ -18,15 +18,21 @@
         <div class="title">
             {{module.title}}
         </div>
-        <div class="recipes">
-            {% set contents = content_by_ids(blog_post_ids) %}
 
-            {% for recipe in contents %}
+        <div class="recipes length-{{blog_post_ids|length}}">
+
+            {% for recipe in blog_post_ids %}
+            {% set my_content = content_by_id(recipe) %}
+            {# {% set target_module_id = "79673321664" %} #}
+
+            {% set target_module_id = "136580095548" %}
+
+
             <div class="recipe-wrapper">
                 <div class="recipe">
-                    <a href="{{ recipe.absolute_url }}" class="featured-image">
+                    <a href="{{ my_content.absolute_url }}" class="featured-image">
                         <div class="wrapper-image">
-                            <img class="fit-cover" loading='lazy' src='{{recipe.featured_image }}' alt='' width=''
+                            <img class="fit-cover" loading='lazy' src='{{ my_content.featured_image }}' alt='' width=''
                                 height='' />
                         </div>
                     </a>
@@ -35,18 +41,35 @@
                         tag.name
                         }}</a>
                     {% endfor %}
-                    <div class="title-recipe">{{ recipe.name }}</div>
-                    <p class="description">Et tuiles d’encre de seiche</p>
+                    <div class="title-recipe">{{my_content.name}}</div>
+                    {% for widget in my_content.allWidgets %}
+                    {% if widget.type == "module" and widget.module_id == target_module_id %}
+                    {% set target_module = widget %}
+                    <div class="description white-a">
+                        {{target_module.body.description}}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
                     <div class="informations">
-                        <div class="information duration">
-                            1h
+
+                        {% for widget in my_content.allWidgets %}
+                        {% if widget.type == "module" and widget.module_id == target_module_id %}
+                        {% set target_module = widget %}
+                        {% for item in target_module.body.sub_informations %}
+                        <div class="information">
+                            {% if item.image_field.src %}
+                            <div class="icon-wrapper">
+                                <img loading='lazy' src='{{item.image_field.src}}' alt='{{item.image_field.alt}}'
+                                    width='{{item.image_field.width}}' height='{{item.image_field.height}}' />
+                            </div>
+                            {% endif %}
+                            <span>
+                                {{item.text_field}}
+                            </span>
                         </div>
-                        <div class="information people-number">
-                            6 pers.
-                        </div>
-                        <div class="information level">
-                            Facile
-                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>

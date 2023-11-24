@@ -17,7 +17,25 @@
         "children": [
             {
                 "name": "image_field",
-                "label": "Image",
+                "label": "Light logo",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "size_type": "auto",
+                    "src": "https://via.placeholder.com/300x150",
+                    "alt": null,
+                    "loading": "disabled"
+                }
+            },
+            {
+                "name": "image_field_dark",
+                "label": "Dark logo",
                 "required": false,
                 "locked": false,
                 "inline_help_text": "",

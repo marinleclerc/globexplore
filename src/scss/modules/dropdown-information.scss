@@ -58,8 +58,10 @@
             .article-inner {
                 padding: 0px 60px 30px 0px;
 
-                p {
+                p,
+                div {
                     margin: 0;
+                    font-size: 15px;
                 }
             }
         }

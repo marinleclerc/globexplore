@@ -89,9 +89,19 @@ footer.footer {
 
         .items {
             display: flex;
+            flex-wrap: wrap;
 
             a {
                 margin: 15px 15px 0;
+            }
+
+            @media screen and (max-width: $size3) {
+                justify-content: center;
+
+                a {
+                    min-width: calc(50% - 30px);
+                    text-align: center;
+                }
             }
         }
     }

@@ -1,0 +1,11 @@
+.recipes {
+    .tag-listing {
+        margin-top: 0;
+    }
+
+    .recipe-wrapper {
+        &:nth-child(n+4) {
+            margin-top: 120px;
+        }
+    }
+}

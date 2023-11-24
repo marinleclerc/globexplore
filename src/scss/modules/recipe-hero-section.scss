@@ -6,10 +6,15 @@
         display: flex;
         justify-content: space-between;
         min-height: 680px;
+        flex-wrap: wrap;
 
         .recipe-information {
             width: calc(100% / 12 * 5 - 15px);
             position: relative;
+
+            @media screen and (max-width: $size3) {
+                width: 100%;
+            }
 
             h1 {
                 font-size: 60px;
@@ -39,12 +44,26 @@
             width: calc(100% / 12 * 6 - 15px);
             position: relative;
 
+            @media screen and (max-width: $size3) {
+                width: 100%;
+                margin-top: 30px;
+            }
+
             .inner {
                 position: absolute;
                 left: 0;
                 top: 0;
                 width: 50vw;
                 height: 680px;
+                max-width: 705px;
+
+                @media screen and (max-width: $size3) {
+                    position: relative;
+                    width: 100%;
+                    aspect-ratio: 740 / 680;
+                    max-width: 100%;
+                    height: inherit;
+                }
             }
         }
     }

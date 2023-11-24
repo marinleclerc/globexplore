@@ -2,6 +2,13 @@
     background-color: $color1;
     position: relative;
     overflow: hidden;
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+
+    @media screen and (max-width: 767px) {
+        padding-top: calc(var(--pt) / 2);
+        padding-bottom: calc(var(--pb) / 2);
+    }
 
     .item {
         border-radius: 300px;
@@ -14,7 +21,8 @@
         text-decoration: none;
 
         img {
-            transition: transform 0.3s;
+            backface-visibility: hidden;
+            transition: transform 0.35s, filter 0.35s;
         }
 
         &::after {
@@ -24,8 +32,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(18, 18, 18, 0.60);
+            background: rgba(18, 18, 18, 1);
+            opacity: 0.6;
             z-index: 11;
+            will-change: opacity;
+            transition: opacity 0.35s;
         }
 
         .name-item {
@@ -62,6 +73,11 @@
             width: 300px;
             min-width: 300px;
             height: 300px;
+            -webkit-filter: grayscale(100%);
+            -moz-filter: grayscale(100%);
+            filter: gray;
+            filter: grayscale(100%);
+            will-change: filter;
 
             .name-item {
                 font-size: 44px;
@@ -83,8 +99,14 @@
             }
 
             &:hover {
+                filter: grayscale(0%);
+
+                &::after {
+                    opacity: 0.15;
+                }
+
                 img {
-                    transform: scale(1.05);
+                    transform: scale(1.03);
                 }
 
                 .btn {

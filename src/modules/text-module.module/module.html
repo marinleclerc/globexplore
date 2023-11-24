@@ -1,7 +1,7 @@
 <section id="{{module.module_identity}}"
     class="text-module {{module.content_style.theme}} {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
     {% if module.content_style.padding_choice=='custom' %}
-    style="padding-top: {{ module.content_style.custom_padding_top }}px; padding-bottom: {{ module.content_style.custom_padding_bottom }}px;"
+    style="--pt:{{ module.content_style.custom_padding_top }}px; --pb:{{ module.content_style.custom_padding_bottom }}px;"
     {% endif %}>
     <div class="container">
         <div class="label {% if module.content_style.theme == 'dark' %}grey{% else %}grey-second{% endif %}">

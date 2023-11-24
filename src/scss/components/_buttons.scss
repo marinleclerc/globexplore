@@ -106,4 +106,22 @@
             }
         }
     }
+
+    &.tertiary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color2;
+        font-size: 16px;
+        letter-spacing: 0.16px;
+        color: #fff;
+        padding: 20px 45px;
+        border-radius: 175px;
+        will-change: transform;
+        transition: transform 0.3s;
+
+        &:hover {
+            transform: scale(0.95);
+        }
+    }
 }

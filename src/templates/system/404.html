@@ -4,7 +4,7 @@
   label: Perles des saveurs - 404 error
   screenshotPath: ../../images/template-previews/404.png
 -->
-{% extends "../layouts/base.html" %}
+{% extends "../layouts/base-system.html" %}
 {# pageTitle is used on system templates for setting a value for the title tag #}
 {% set pageTitle = "Error 404 | Page not found" %}
 
@@ -12,7 +12,7 @@
 <section class="error-page content-wrapper">
   <div class="container" data-error="404">
     <h1>Page not found.</h1>
-    <a href="/" class="btn">Home</a>
+    <a href="/" class="btn secondary dark">Home</a>
   </div>
 </section>
 {% endblock body %}

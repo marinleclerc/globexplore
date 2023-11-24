@@ -3,13 +3,122 @@
     .product-detail {
         display: flex;
         flex-wrap: wrap;
+        padding-bottom: 30px;
+        position: relative;
+
+        @media screen and (max-width: $size2) {
+            flex-direction: column-reverse;
+        }
 
         .wrapper-image,
+        .wrapper-left,
         .product-informations {
             width: 50%;
+            position: relative;
 
             @media screen and (max-width: $size2) {
                 width: 100%;
+            }
+        }
+
+        .wrapper-left {
+            height: 850px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            right: 50%;
+            width: 50vw;
+
+            @media screen and (max-width: $size2) {
+                //height: 450px;
+                height: inherit;
+                aspect-ratio: 1;
+                position: relative;
+                width: 100%;
+                right: inherit;
+            }
+
+            .swiper-container {
+                overflow: hidden;
+                position: absolute;
+                height: 100%;
+                width: 50vw;
+                top: 0;
+                right: 0;
+
+                @media screen and (max-width: $size2) {
+                    width: 100%;
+                }
+            }
+
+            .controllers {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+                z-index: 11;
+
+                .controller {
+                    padding: 0;
+                    background-color: transparent;
+                    border: none;
+                    transition: transform 0.3s;
+
+                    &.next {
+                        transform: scaleX(-1);
+                    }
+
+                    svg {
+                        cursor: pointer;
+                        border-radius: 50%;
+                        transition: background-color 0.3s;
+
+                        line,
+                        path {
+                            transition: stroke 0.3s;
+                        }
+                    }
+
+                    &:hover {
+                        svg {
+                            background-color: $text-color1;
+
+                            line,
+                            path {
+                                stroke: #fff;
+                            }
+                        }
+                    }
+                }
+
+                &.custom {
+                    .controller {
+                        svg {
+
+                            line,
+                            path,
+                            rect {
+                                stroke: var(--color);
+                            }
+                        }
+
+                        &:hover {
+                            svg {
+                                background-color: var(--color);
+
+                                line,
+                                path {
+                                    stroke: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
         }
 
@@ -25,27 +134,27 @@
                 height: 450px;
             }
 
-            &:before {
-                content: '';
+            .inner {
                 position: absolute;
-                height: 100%;
-                width: 50vw;
                 right: 0;
                 top: 0;
-                background-color: rgba($color: $color2, $alpha: 0.1);
+                width: 50vw;
 
-                @media screen and (max-width: $size2) {
-                    width: 100vw;
-                    right: -30px;
+                img {
+                    max-width: 100%;
+                    height: auto;
                 }
             }
         }
 
         .product-informations {
-            padding: 165px 0 30px;
+            padding: 165px 0 0;
+            margin-left: 50%;
 
             @media screen and (max-width: $size2) {
-                padding: 75px 0 30px;
+                padding: 75px 0 0;
+                width: 100%;
+                margin: 0 0 45px 0;
             }
 
             >div {
@@ -74,6 +183,7 @@
             .informations {
                 margin-bottom: 60px;
                 margin-top: 15px;
+                justify-content: center;
 
                 @media screen and (max-width: $size2) {
                     margin-bottom: 45px;
@@ -84,6 +194,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                flex-wrap: wrap;
                 margin-top: 90px;
                 gap: 45px;
 

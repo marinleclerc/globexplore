@@ -1,25 +1,70 @@
 <section class="product-single-hero">
     <div class="container">
         <div class="product-detail">
-            <div class="wrapper-image">
-                <img loading="lazy" src="{{ module.image.src }}" alt="{{ module.image.alt }}"
-                    width="{{ module.image.width }}" height="{{ module.image.height }}">
+            {% if module.media_type == "slider" %}
+            <div class="wrapper-left">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for image in module.images %}
+                        <div class="swiper-slide">
+                            <img class="fit-cover" loading="lazy" src="{{ image.image_field.src }}"
+                                alt="{{ image.image_field.alt }}" width="{{ image.image_field.width }}"
+                                height="{{ image.image_field.height }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="controllers {% if module.controllers.controller_type == 'custom' %}custom{% endif %}"
+                    style="{% if module.controllers.controller_type == 'custom' %}--color: rgba({{ module.controllers.field_color.color|convert_rgb }}, {{ module.controllers.field_color.opacity/100 }});{% endif %}">
+                    <button class="controller previous">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none">
+                            <line x1="29.4855" y1="22.0609" x2="13.0333" y2="22.0609" stroke="#262626"
+                                stroke-width="1.49565" />
+                            <path d="M16.7726 25.8L13.0335 22.0609L16.7726 18.3218" stroke="#262626"
+                                stroke-width="1.49565" />
+                            <rect x="42.5" y="42.5" width="42" height="42" rx="21" transform="rotate(-180 42.5 42.5)"
+                                stroke="#262626" />
+                        </svg>
+                    </button>
+                    <button class="controller next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none">
+                            <line x1="29.4855" y1="22.0609" x2="13.0333" y2="22.0609" stroke="#262626"
+                                stroke-width="1.49565" />
+                            <path d="M16.7726 25.8L13.0335 22.0609L16.7726 18.3218" stroke="#262626"
+                                stroke-width="1.49565" />
+                            <rect x="42.5" y="42.5" width="42" height="42" rx="21" transform="rotate(-180 42.5 42.5)"
+                                stroke="#262626" />
+                        </svg>
+                    </button>
+                </div>
             </div>
+            {% else %}
+            <div class="wrapper-image">
+                <div class="inner">
+                    <img class="fit-cover" loading="lazy" src="{{ module.image.src }}" alt="{{ module.image.alt }}"
+                        width="{{ module.image.width }}" height="{{ module.image.height }}">
+                </div>
+            </div>
+            {% endif %}
             <div class="product-informations">
                 <div>
                     <h1 class="product-title">
                         {{ module.title }}
                     </h1>
                     <div class="informations">
-                        <div class="information duration">
-                            1h
+                        {% for item in module.sub_informations %}
+                        <div class="information">
+                            {% if item.image_field.src %}
+                            <div class="icon-wrapper">
+                                <img loading='lazy' src='{{item.image_field.src}}' alt='{{item.image_field.alt}}'
+                                    width='{{item.image_field.width}}' height='{{item.image_field.height}}' />
+                            </div>
+                            {% endif %}
+                            <span>
+                                {{item.text_field}}
+                            </span>
                         </div>
-                        <div class="information people-number">
-                            6 pers.
-                        </div>
-                        <div class="information level">
-                            Facile
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="dropdown-information">
                         {% for item in module.items %}
@@ -44,7 +89,7 @@
                     <div class="buttons">
                         {% for button in module.buttons %}
                         <a href="{{button.url_field.href}}"
-                            class="btn {% if button.button_type == 'primary' %}primary{% else %}secondary dark{% endif %}">
+                            class="btn {% if button.button_type == 'primary' %}primary{% elif button.button_type == 'tertiary' %}tertiary{% else %}secondary dark{% endif %}">
                             {{button.button_text}}
                         </a>
                         {% endfor %}

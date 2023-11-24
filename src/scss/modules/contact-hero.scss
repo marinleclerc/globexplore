@@ -1,32 +1,45 @@
 .contact-hero {
     background-color: $color1;
 
-    .title {
-        width: calc(50% - 15px);
-        color: $text-color2;
-        margin-bottom: 75px;
+    .inner {
+        position: relative;
+        min-height: 765px;
     }
 
     .wrapper {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
 
-        .form-wrapper {
+        .wrapper-left {
             width: calc(50% - 15px);
-        }
 
-        .img-wrapper {
-            width: calc(100% / 12 * 4 - 15px);
-            position: relative;
-
-            .inner {
-                position: absolute;
-                left: 0;
-                top: 0;
-                overflow: hidden;
-                width: 515px;
-                height: 100%;
+            @media screen and (max-width: $size3) {
+                width: 100%;
+                margin-bottom: 45px;
             }
+
+            .title {
+                color: $text-color2;
+                margin-bottom: 75px;
+            }
+        }
+    }
+
+    .img-wrapper {
+        width: 515px;
+        aspect-ratio: 515 / 765;
+        max-width: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        @media screen and (max-width: $size3) {
+            position: relative;
+            width: calc(100% - 60px);
+            right: inherit;
+            top: inherit;
+            margin-left: 30px;
         }
     }
 }

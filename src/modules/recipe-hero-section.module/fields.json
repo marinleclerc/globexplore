@@ -77,5 +77,56 @@
         "inline_help_text": "",
         "help_text": "",
         "default": "partager la recette"
+    },
+    {
+        "name": "sub_informations",
+        "label": "Informations",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+            "min": null,
+            "max": null,
+            "sorting_label_field": null,
+            "default": 3
+        },
+        "children": [
+            {
+                "name": "text_field",
+                "label": "Texte",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "1h"
+            },
+            {
+                "name": "image_field",
+                "label": "Image",
+                "required": false,
+                "locked": false,
+                "inline_help_text": "",
+                "help_text": "",
+                "responsive": true,
+                "resizable": true,
+                "show_loading": false,
+                "type": "image",
+                "default": {
+                    "size_type": "auto",
+                    "src": "https://via.placeholder.com/15",
+                    "alt": null,
+                    "loading": "disabled"
+                }
+            }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": []
     }
 ]

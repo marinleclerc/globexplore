@@ -15,7 +15,7 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
     const lettersTitle = Array.from(title.querySelectorAll(".main-hero-section-copy h1 .chars"));
 
     const splitLines = new SplitText('.featured-text', {
-        type: "chars",
+        type: "words, chars",
         charsClass: "chars chars++"
     });
 
