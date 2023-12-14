@@ -30,14 +30,14 @@
                     {% for item in module.items %}
                     <li>
                         <a href="{{item.link_field.url.href}}"
-                            class="nav-item{% if item.featured %} featured btn secondary white{% endif %}">
+                            class="nav-item{% if item.featured %} btn tertiary small{% endif %}">
                             {{item.text_field}}
                         </a>
                     </li>
                     {% endfor %}
                 </ul>
             </nav>
-            {% if content.language %}
+            {% if content.language && module.langage_switcher == true %}
             <div class="language-wrapper-wrapper d-rp-none">
                 {# {% module "language-switcher" path="@hubspot/language_switcher",
                 display_mode='localized', label="Language Switcher" %} #}

@@ -8,4 +8,10 @@
             margin-top: 120px;
         }
     }
+
+    &.invert {
+        .icon-wrapper img {
+            filter: invert(1);
+        }
+    }
 }

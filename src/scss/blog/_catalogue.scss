@@ -1,7 +1,6 @@
 .catalogue-template {
     position: relative;
     overflow: hidden;
-    padding-bottom: 180px;
 
     .tag-listing-template {
         padding-top: 210px;
@@ -26,5 +25,9 @@
             display: flex;
             flex-wrap: wrap;
         }
+    }
+
+    .container-blog-pagination {
+        padding-bottom: 180px;
     }
 }

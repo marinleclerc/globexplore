@@ -95,6 +95,10 @@
         flex-direction: column;
         justify-content: center;
 
+        .label {
+            margin-bottom: 30px;
+        }
+
         .featured-text {
             font-size: 70px;
             font-style: normal;

@@ -139,7 +139,28 @@
                     "controlling_value_regex": "custom",
                     "operator": "EQUAL"
                 }
-            }
+            },
+            {
+            "name": "background_color",
+            "label": "Background color",
+            "required": false,
+            "locked": false,
+            "display": "select",
+            "inline_help_text": "",
+            "help_text": "",
+            "choices": [
+            [
+              "dark",
+              "Dark"
+            ],
+            [
+              "gold",
+              "Gold"
+            ]
+            ],
+            "type": "choice",
+            "placeholder": "",
+            "default": "dark" }
         ]
     },
     {
@@ -213,6 +234,20 @@
                 }
             },
             {
+            "name" : "number_field",
+            "label" : "Taille en px des cercles contenant les pictos",
+            "required" : false,
+            "locked" : false,
+            "display" : "text",
+            "step" : 1,
+            "type" : "number",
+            "min" : null,
+            "max" : null,
+            "inline_help_text": "",
+            "help_text": "",
+            "default" : 64 
+            },
+            {
                 "name": "description",
                 "label": "Description",
                 "required": false,
@@ -227,5 +262,49 @@
         "inline_help_text": "",
         "help_text": "",
         "default": []
+    },
+    {
+    "id": "type_size",
+    "name": "type_size",
+    "label": "Choice field",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "inline_help_text": "",
+    "help_text": "",
+    "choices": [
+    [
+      "custom",
+      "Custom"
+    ],
+    [
+      "classic",
+      "Classique"
+    ]
+    ],
+    "type": "choice",
+    "placeholder": "",
+    "default": "classic" 
+    },
+    {
+    "name" : "size",
+    "label" : "Longueur en px",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "min" : null,
+    "max" : null,
+    "inline_help_text": "",
+    "help_text": "",
+    "visibility" : {
+        "controlling_field": "type_size",
+        "controlling_value_regex": "custom",
+        "operator": "EQUAL",
+        "access": null,
+        "hidden_subfields": null
+      },
+    "default" : 360
     }
 ]

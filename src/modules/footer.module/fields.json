@@ -133,6 +133,16 @@
                             "open_in_new_tab": false,
                             "no_follow": false
                         }
+                    },
+                    {
+                    "name": "featured",
+                    "label": "Mis en avant",
+                    "required": false,
+                    "locked": false,
+                    "type": "boolean",
+                    "inline_help_text": "",
+                    "help_text": "",
+                    "default": false 
                     }
                 ],
                 "type": "group",

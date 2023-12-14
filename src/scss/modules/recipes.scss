@@ -7,6 +7,10 @@
         padding-bottom: calc(var(--pb) / 2);
     }
 
+    .label {
+        margin-bottom: 25px;
+    }
+
     &.dark {
         background-color: $color1;
 
@@ -206,9 +210,14 @@
             overflow: hidden;
             width: 100%;
 
+
             &:hover {
                 .wrapper-image img {
                     transform: scale(1.05);
+                }
+
+                .title-recipe {
+                    color: $color2;
                 }
             }
 
@@ -244,13 +253,17 @@
             .tag {
                 position: relative;
                 z-index: 11;
+                text-align: center;
             }
 
             .title-recipe {
                 font-family: $font1;
                 font-size: 30px;
+                line-height: 1.35;
                 margin-bottom: 15px;
                 text-align: center;
+
+                transition: color 0.3s;
 
                 @media screen and (max-width: $size2) {
                     font-size: 22px;
@@ -271,6 +284,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
+                justify-content: center;
 
                 .information {
                     margin-top: 15px;

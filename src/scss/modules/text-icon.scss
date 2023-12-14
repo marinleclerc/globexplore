@@ -8,6 +8,10 @@
         padding-bottom: calc(var(--pb) / 2);
     }
 
+    &.gold {
+        background-color: $color2;
+    }
+
     .label,
     .title {
         text-align: center;
@@ -29,6 +33,10 @@
         justify-content: space-between;
         flex-wrap: wrap;
         margin-top: 60px;
+
+        &.center {
+            justify-content: center;
+        }
 
         @media screen and (max-width: $size2) {
             margin-top: 0;
@@ -55,13 +63,13 @@
         max-width: 100%;
 
         .icon-wrapper {
-            width: 64px;
-            height: 64px;
+            width: var(--size);
+            aspect-ratio: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            border: 1px solid $text-color2;
+            border: 1px solid $color2;
             margin-bottom: 45px;
 
             @media screen and (max-width: $size3) {
@@ -69,8 +77,8 @@
             }
 
             img {
-                max-width: 32px;
-                max-height: 32px;
+                max-width: 60%;
+                max-height: 60%;
                 width: auto;
                 height: auto;
             }

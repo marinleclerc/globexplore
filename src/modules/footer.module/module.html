@@ -11,7 +11,7 @@
             {% for column in module.columns %}
             <div class="column">
                 {% for item in column.items %}
-                <a href="{{item.link_field.href.url}}">
+                <a href="{{item.link_field.href.url}}" {% if item.featured %}class="featured" {% endif %}>
                     {{item.text_field}}
                 </a>
                 {% endfor %}

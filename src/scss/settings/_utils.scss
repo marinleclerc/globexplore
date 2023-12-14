@@ -45,3 +45,11 @@ img:not([src]) {
 .white {
   color: #fffffb;
 }
+
+p a {
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color2;
+  }
+}

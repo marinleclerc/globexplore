@@ -18,6 +18,28 @@ if ($(".navigation").length > 0) {
             header.classList.toggle('active');
         }
     });
+
+    // Récupérez l'URL actuelle
+    var currentUrl = window.location.href;
+
+    // Récupérez tous les éléments avec la classe "nav-item"
+    var navItems = document.querySelectorAll('.nav-item');
+
+    // Parcourez les éléments et comparez les parties pertinentes des URLs
+    navItems.forEach(function(navItem) {
+        var link = navItem.querySelector('a');
+
+        // Ajoutez une vérification pour s'assurer que link n'est pas null
+        if (link && link.href) {
+            var linkUrl = link.href;
+
+            if (currentUrl.indexOf(linkUrl) !== -1 || linkUrl.indexOf(currentUrl) !== -1) {
+                // Si les parties pertinentes des URLs correspondent, ajoutez la classe "active"
+                navItem.classList.add('active');
+            }
+        }
+    });
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {

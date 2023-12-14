@@ -15,11 +15,10 @@
     {% elif tag %}
     <div class="tag-listing-template">
         {# Tag Listing - You can manage it here #}
-        <div class="label">
-            Tag
-        </div>
         <h1>
-            {{ page_meta.html_title|split(' | ')|last }}
+            {{ page_meta.html_title|split(' |
+            ')|last|cut("(2)")|last|cut("(3)")|last|cut("(4)")|last|cut("(5)")|last|cut("(6)")|last|cut("(7)")|last|cut("(8)")
+            }}
         </h1>
         <section id="{{module.module_identity}}" class="catalogue">
             <div class="container">
@@ -55,7 +54,6 @@
     <!--Classic Listing - You can manage it here -->
     {% module "module_16932173756371" path="/globexplorer/modules/hero-section", label="hero-section" %}
     {% module "module_16950282307011" path="/globexplorer/modules/text-icon", label="text-icon" %}
-    {% module "module_16932173886012" path="/globexplorer/modules/cover-recipe", label="cover-recipe" %}
     {% module "module_16932248485891" path="/globexplorer/modules/text-module", label="text-module" %}
     <section id="catalogue" class="catalogue">
         <div class="container">
@@ -99,7 +97,7 @@
         {% elif current_page_num == 1 %}{% set offset = 2 %}
         {% else %}{% set offset = 0 %}{% endif %}
 
-        {% if current_page_num > 1 %} <a class="arrow previous" href="{{ blog_page_link(last_page_num) }}">
+        {% if current_page_num > 1 %} <a class="arrow previous" href="{{ blog_page_link(last_page_num) }}#catalogue">
             <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M5.39773 0.499999L6.27273 1.36364L2.67045 4.96591L12 4.96591L12 6.21591L2.67045 6.21591L6.27273 9.80682L5.39773 10.6818L0.306819 5.59091L5.39773 0.499999Z"
@@ -112,34 +110,30 @@
             {% set this_page = current_page_num + page + offset %}
             {% if this_page == 1 %}
             <a class="blog-pagination__link {{ " blog-pagination__link--active" if this_page==current_page_num }}"
-                href="{{ blog_page_link(this_page) }}">{{ this_page }}</a>
+                href="{{ blog_page_link(this_page) }}#catalogue">{{ this_page }}</a>
             {% endif %}
             {% endfor %}
-            {% if current_page_num > 2 %} <p>...</p>
-            {% endif %}
             {% for page in page_list %}
             {% set this_page = current_page_num + page + offset %}
             {% if this_page > 1 %}
             {% if this_page >= contents.total_page_count %} {% else %} <a class="blog-pagination__link {{ "
                 blog-pagination__link--active" if this_page==current_page_num }}"
-                href="{{ blog_page_link(this_page) }}">{{ this_page }}</a>
+                href="{{ blog_page_link(this_page) }}#catalogue">{{ this_page }}</a>
             {% endif %}
             {% endif %}
             {% endfor %}
-            {% if current_page_num < contents.total_page_count - 3 %} <p>...</p>
-                {% endif %}
-                {% for page in page_list %}
-                {% set this_page = current_page_num + page + offset %}
-                {% if this_page ==
-                contents.total_page_count %}
-                <a class="blog-pagination__link {{ " blog-pagination__link--active" if this_page==current_page_num }}"
-                    href="{{ blog_page_link(this_page) }}">{{ this_page }}</a>
-                {% endif %}
-                {% endfor %}
+            {% for page in page_list %}
+            {% set this_page = current_page_num + page + offset %}
+            {% if this_page ==
+            contents.total_page_count %}
+            <a class="blog-pagination__link {{ " blog-pagination__link--active" if this_page==current_page_num }}"
+                href="{{ blog_page_link(this_page) }}#catalogue">{{ this_page }}</a>
+            {% endif %}
+            {% endfor %}
         </div>
         {% if current_page_num < contents.total_page_count %}<a class="arrow next {{ "
             blog-pagination__next-link--disabled" if !next_page_num }}"
-            href="{{ blog_page_link(current_page_num + 1) }}">
+            href="{{ blog_page_link(current_page_num + 1) }}#catalogue">
             <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M6.60227 10.5L5.72727 9.63636L9.32955 6.03409H0V4.78409H9.32955L5.72727 1.19318L6.60227 0.318182L11.6932 5.40909L6.60227 10.5Z"
@@ -148,6 +142,12 @@
             </a>
             {% endif %}
     </nav>
+    {% endif %}
+    {% if blog_author %}
+    {# Author Block Listing - You can manage it here #}
+    {% elif tag %}
+    {% else %}
+    {% module "module_16932173886012" path="/globexplorer/modules/cover-recipe", label="cover-recipe" %}
     {% endif %}
 </div>
 {% endblock body %}

@@ -217,6 +217,21 @@
         },
         "children": [
             {
+                "name": "post_title",
+                "label": "Titre",
+                "required": false,
+                "locked": false,
+                "validation_regex": "",
+                "validation_error_message": "",
+                "allow_new_line": false,
+                "show_emoji_picker": false,
+                "type": "text",
+                "placeholder": "",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": "Noix St Jacques, sabayon au krill"
+            },
+            {
                 "name": "tag",
                 "label": "Tag",
                 "required": false,
@@ -257,21 +272,6 @@
                 "inline_help_text": "",
                 "help_text": "",
                 "default": {}
-            },
-            {
-                "name": "post_title",
-                "label": "Titre",
-                "required": false,
-                "locked": false,
-                "validation_regex": "",
-                "validation_error_message": "",
-                "allow_new_line": false,
-                "show_emoji_picker": false,
-                "type": "text",
-                "placeholder": "",
-                "inline_help_text": "",
-                "help_text": "",
-                "default": "Noix St Jacques, sabayon au krill"
             },
             {
                 "name": "description",

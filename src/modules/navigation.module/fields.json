@@ -145,5 +145,15 @@
         "inline_help_text": "",
         "help_text": "",
         "default": []
+    },
+    {
+    "name": "langage_switcher",
+    "label": "Afficher le langage switcher",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": false 
     }
 ]

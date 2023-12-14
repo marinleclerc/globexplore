@@ -4,9 +4,9 @@
     style="--pt:{{ module.content_style.custom_padding_top }}px; --pb:{{ module.content_style.custom_padding_bottom }}px;"
     {% endif %}>
     {% for item in module.items %}
-    <section>
+    <section {% if item.section_id !=null %} id="{{item.section_id}}" {% endif %}>
         <div class="inner">
-            <div class="img-wrapper">
+            <div class="img-wrapper {{item.text_position}}">
                 <img class="fit-cover" loading='lazy' src='{{item.image.src}}' alt='{{item.image.alt}}'
                     width='{{item.image.width}}' height='{{item.image.height}}' />
                 <div class="container {{item.text_position}}-position">

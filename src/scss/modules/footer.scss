@@ -48,13 +48,24 @@ footer.footer {
             &:hover {
                 color: $color2;
             }
+
+            &.featured {
+                font-weight: 700;
+            }
         }
 
         .column,
         .left-column {
-            width: 265px;
             max-width: 100%;
             padding-right: 15px;
+        }
+
+        .column {
+            width: 230px;
+        }
+
+        .left-column {
+            width: 265px;
         }
     }
 

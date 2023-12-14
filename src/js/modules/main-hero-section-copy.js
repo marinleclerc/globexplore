@@ -63,16 +63,40 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
         }
     });
 
+    //.addLabel('clip', 'start+=0.15')
+    /* 
+            .fromTo(clipElement, {
+                clipPath: 'inset(0% 0% round 0vw)'
+            }, {
+                clipPath: 'inset(50% 50% round 23vw)'
+            }) */
 
-    clipTimeline.addLabel('start', 0)
 
-        //.addLabel('clip', 'start+=0.15')
-
-        .fromTo(clipElement, {
-            clipPath: 'inset(0% 0% round 0vw)'
-        }, {
-            clipPath: 'inset(50% 50% round 23vw)'
+    clipTimeline
+        .addLabel('start', 0)
+        .addLabel('clip', 'start+=0.15')
+        .set(clipElement, { clipPath: 'inset(0% 0% round 0vw)' })
+        .to(clipElement, {
+            clipPath: 'inset(29% 39% round 23vw)',
+            ease: 'linear',
         })
+        .to(clipElement, {
+            clipPath: 'inset(50% 50% round 23vw)',
+            ease: 'linear',
+        })
+
+
+    /*         .to(clipElement, {
+            clipPath: 'inset(50% 50% round 23vw)',
+            duration: 1,
+        }) */
+    /*  
+    .to(clipElement, {
+        clipPath: 'inset(10% 30% round 15vw)',
+        duration: 1,
+    }); */
+
+
 
 
     // Créez une timeline pour l'animation
@@ -89,7 +113,17 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
                 otherClipTimeline.to(".main-hero-section-copy .description", {
                     opacity: 0,
                 })
-            },
+            }
+            // Effet de "scrub" pour lier au défilement
+        }
+    });
+
+    const otherSecondClipTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: selector,
+            start: 'top top',
+            end: '50% 50%',
+            markers: false,
             onEnterBack: () => {
                 otherClipTimeline.to(".main-hero-section-copy .description", {
                     opacity: 1,
@@ -117,7 +151,7 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
         .addLabel('clip', 'start+=0.15')
 
         .fromTo(clipElement, {
-            clipPath: 'inset(22% 39% round 23vw)'
+            clipPath: 'inset(29% 39% round 23vw)'
         }, {
             clipPath: 'inset(0% 0% round 0vw)'
         }, 'clip+=0.1')

@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 
     .information {
         margin-top: 15px;
@@ -28,6 +29,12 @@
             width: 17px;
             height: 17px;
             margin-right: 15px;
+
+            &.invert {
+                img {
+                    filter: invert(1);
+                }
+            }
 
             img {
                 max-width: 100%;

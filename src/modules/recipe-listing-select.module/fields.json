@@ -161,7 +161,17 @@
                 "type": "choice",
                 "placeholder": "",
                 "default": "dark"
-            }
+            },
+            {
+                "name": "invert_color",
+                "label": "Inversé la couleur des pictos",
+                "required": false,
+                "locked": false,
+                "type": "boolean",
+                "inline_help_text": "",
+                "help_text": "",
+                "default": false 
+                }
         ]
     },
     {
