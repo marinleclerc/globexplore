@@ -61,6 +61,27 @@
             opacity: 0;
         }
 
+        div.target {
+            &.center {}
+
+            &.right {
+                display: block;
+                width: fit-content;
+                margin: 0 0 0 auto;
+
+                @media screen and (max-width: $size2) {
+                    margin: 0 auto;
+                    width: auto;
+
+                    h1,
+                    h2,
+                    p {
+                        text-align: center !important;
+                    }
+                }
+            }
+        }
+
         >div.target {
             position: relative;
             width: 100%;
@@ -94,6 +115,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        @media screen and (max-width: $size4) {
+            padding-bottom: 105px;
+        }
 
         .label {
             margin-bottom: 30px;

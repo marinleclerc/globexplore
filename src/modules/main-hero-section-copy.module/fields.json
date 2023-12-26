@@ -25,6 +25,66 @@
         "default": "La gastronomie créative"
     },
     {
+    "name": "title_apparence",
+    "label": "Apparence du h1",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "inline_help_text": "",
+    "help_text": "",
+    "choices": [
+    [
+      "h1",
+      "H1"
+    ],
+    [
+      "h2",
+      "H2"
+    ],
+    [
+      "h3",
+      "H3"
+    ],
+    [
+      "h4",
+      "H4"
+    ],
+    [
+      "h5",
+      "H5"
+    ],
+    [
+      "h6",
+      "H6"
+    ]
+    ],
+    "type": "choice",
+    "placeholder": "",
+    "default": "h2" 
+    },
+    {
+    "name": "text_position",
+    "label": "Position du texte",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "inline_help_text": "",
+    "help_text": "",
+    "choices": [
+    [
+      "center",
+      "Centré"
+    ],
+    [
+      "right",
+      "À droite"
+    ]
+    ],
+    "type": "choice",
+    "placeholder": "",
+    "default": "center" 
+    },
+    {
         "name": "description",
         "label": "description",
         "required": false,

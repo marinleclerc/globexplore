@@ -6,6 +6,47 @@
     z-index: 1111;
     transition: padding 0.3s, background-color 0.3s;
 
+    .container {
+        min-height: 96px;
+
+        a.logo {
+            img {
+                width: 160px;
+                height: auto;
+            }
+        }
+    }
+
+    &.home {
+        .container {
+            a.logo {
+                img {
+                    width: 310px;
+                    height: auto;
+                    position: absolute;
+                    top: 50px;
+                    transform: translateY(-50%);
+                    transition: width 0.3s, top 0.3s;
+
+                    @media screen and (max-width: $size2) {
+                        width: 110px;
+                        height: auto;
+                        position: relative;
+                        top: inherit;
+                        transform: none;
+                    }
+                }
+            }
+        }
+
+        &.active {
+            .container a.logo img {
+                width: 160px;
+                top: 50%;
+            }
+        }
+    }
+
     &.active {
         background-color: $color1;
         padding: 10px 0;
@@ -33,6 +74,17 @@
 
             img.dark-logo {
                 display: none;
+            }
+
+            img {
+
+                @media screen and (max-width: $size2) {
+                    width: 110px;
+                    height: auto;
+                    position: relative;
+                    top: inherit;
+                    transform: none;
+                }
             }
         }
 
@@ -96,6 +148,8 @@
             }
 
             nav {
+                position: relative;
+                z-index: 11;
 
                 ul {
                     list-style-type: none;
@@ -118,7 +172,8 @@
                             transition: color 0.3s;
 
                             &:hover,
-                            &.gold {
+                            &.gold,
+                            &.active {
                                 color: $color2;
                             }
 
@@ -237,7 +292,13 @@
                 }
             }
 
-            .toggler {}
+            .toggler {
+                border: 1px solid $text-color1;
+
+                span {
+                    background-color: $text-color1;
+                }
+            }
 
             .wrapper {
 

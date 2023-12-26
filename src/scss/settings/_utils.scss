@@ -48,8 +48,17 @@ img:not([src]) {
 
 p a {
   transition: color 0.3s;
+  color: inherit;
 
   &:hover {
     color: $color2;
+  }
+}
+
+#main-content #hs_cos_wrapper_flexible_column .hs_cos_wrapper:nth-child(2) {
+
+  .text-module,
+  .targets {
+    padding-top: 190px;
   }
 }

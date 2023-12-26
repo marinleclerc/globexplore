@@ -4,20 +4,20 @@ if ($(".products").length > 0) {
         e.style.left = n.clientX + "px",
             e.style.top = n.clientY + "px"
     });
-    var e = document.getElementById("cursor2");
-    function n(t) {
+    //var e = document.getElementById("cursor2");
+/*     function n(t) {
         e.classList.add("hover")
     }
     function s(t) {
         e.classList.remove("hover")
-    }
-    s();
+    } */
+/*     s();
     for (var r = document.querySelectorAll(".products .item"), a = r.length - 1; a >= 0; a--) {
         o(r[a])
     }
     function o(t) {
         t.addEventListener("mouseover", n), t.addEventListener("mouseout", s)
-    }
+    } */
 }
 
 if ($(".main-hero-section-copy").length > 0) {
@@ -25,33 +25,33 @@ if ($(".main-hero-section-copy").length > 0) {
         e.style.left = n.clientX + "px",
             e.style.top = n.clientY + "px"
     });
-    var e = document.getElementById("targetButton");
-    function n(t) {
+    /* var e = document.getElementById("targetButton"); */
+/*     function n(t) {
         e.classList.add("hover")
     }
     function s(t) {
         e.classList.remove("hover")
-    }
-    s();
+    } */
+/*     s();
     for (var r = document.querySelectorAll(".main-hero-section-copy .first-content"), a = r.length - 1; a >= 0; a--) {
         o(r[a])
     }
     function o(t) {
         t.addEventListener("mouseover", n), t.addEventListener("mouseout", s)
-    }
+    } */
 
     // Sélectionnez l'élément avec la classe "first-content"
     const firstContent = document.querySelector('.first-content');
 
     // Sélectionnez l'élément avec l'ID "targetButton"
-    const targetButton = document.getElementById('targetButton');
+    //const targetButton = document.getElementById('targetButton');
 
     // Récupérez la valeur du data-attribut "target"
-    const dataTargetValue = targetButton.getAttribute('data-target');
-    console.log('dataTargetValue:', dataTargetValue)
+    //const dataTargetValue = targetButton.getAttribute('data-target');
+    //console.log('dataTargetValue:', dataTargetValue)
 
     // Sélectionnez l'élément avec l'ID "second-content"
-    const secondContent = document.getElementById(dataTargetValue);
+/*     const secondContent = document.getElementById(dataTargetValue);
 
     firstContent.addEventListener('click', () => {
         const targetElement = secondContent;
@@ -78,6 +78,6 @@ if ($(".main-hero-section-copy").length > 0) {
         }
 
         requestAnimationFrame(step);
-    });
+    }); */
 
 }

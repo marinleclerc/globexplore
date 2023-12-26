@@ -1,8 +1,8 @@
 <section id="{{module.module_identity}}" class="main-hero-section-copy">
     <div class="first-content">
-        <a id="targetButton" data-target="{{module.button_first.target_id}}" class="cursor btn primary sm">
+        {# <a id="targetButton" data-target="{{module.button_first.target_id}}" class="cursor btn primary sm">
             <span>{{module.button_first.button_text}}</span>
-        </a>
+        </a>#}
         <div class="wrapper">
             <div class="clip">
                 <div class="clip__img" style="background-image:url({{module.image.src}})">
@@ -10,8 +10,8 @@
             </div>
         </div>
         <div class="container">
-            <div class="target">
-                <h1>
+            <div class="target {{module.text_position}}">
+                <h1 class="{{module.title_apparence}}">
                     {{module.title}}
                 </h1>
                 <div class="description">

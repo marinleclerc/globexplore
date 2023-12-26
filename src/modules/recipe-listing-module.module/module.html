@@ -6,7 +6,7 @@
     <div class="container">
         <div class="tag-listing dark">
             {% for tag in module.tags %}
-            <a class="tag" href="{{actual_url}}?tag={{tag.tag_value}}">
+            <a class="tag" href="{{actual_url}}?tag={{tag.tag_value}}#recipes-listing">
                 {{tag.tag_label}}
             </a>
             {% endfor %}
@@ -134,7 +134,7 @@
         {% set new_posts = [] %}
 
         {% for post in module.posts %}
-        {% if post.tag_value == tag_request %}
+        {% if post.tag.tag_value == tag_request %}
         {% do new_posts.append(post) %}
         {% endif %}
         {% endfor %}
@@ -157,7 +157,7 @@
         {% set debut = (current_page_num - 1) * items_per_page %}{# Index du premier élément à afficher #}
         {% set fin = debut + items_per_page %}
 
-        <div class="listing">
+        <div class="recipes">
             {% for item in new_posts %}
             {% if loop.index > debut && loop.index < fin + 1 %} <div class="recipe-wrapper">
                 <div class="recipe">
@@ -228,7 +228,8 @@
                         href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{ loop.index }}</a>
                         {% elif loop.index == current_page_num %}
                         <a class="pagination-number active"
-                            href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{ loop.index
+                            href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{
+                            loop.index
                             }}</a>
                         {% endif %}
                         {% if ellipsis == true %}

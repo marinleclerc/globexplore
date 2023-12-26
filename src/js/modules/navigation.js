@@ -1,4 +1,19 @@
 if ($(".navigation").length > 0) {
+
+        // Sélectionne tous les liens dans la navigation
+        const navLinks = document.querySelectorAll('header nav a');
+    
+        // Boucle à travers chaque lien
+        navLinks.forEach(link => {
+            // Vérifie si l'URL du lien est présente dans l'URL active
+            if (window.location.href.includes(link.href)) {
+                // Ajoute la classe 'active' au lien
+                link.classList.add('active');
+            }
+        });
+    
+
+
     // Sélectionnez l'élément avec l'ID "toggler-nav"
     var togglerNav = document.getElementById('toggler-nav');
 
@@ -39,6 +54,17 @@ if ($(".navigation").length > 0) {
             }
         }
     });
+
+    // Récupérez l'URL actuelle
+    var currentUrl = window.location.href;
+
+    // Testez si l'URL contient les mots "accueil" ou "home" (insensible à la casse)
+    if (currentUrl.toLowerCase().includes("accueil") || currentUrl.toLowerCase().includes("home")) {
+        header.classList.add('home');
+    } else {
+        console.log("L'URL ne contient pas 'accueil' ou 'home'.");
+    }
+
 
 }
 

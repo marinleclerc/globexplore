@@ -43,7 +43,7 @@ footer.footer {
         a {
             text-decoration: none;
             display: block;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
 
             &:hover {
                 color: $color2;
@@ -51,6 +51,10 @@ footer.footer {
 
             &.featured {
                 font-weight: 700;
+            }
+
+            &:not(.featured) {
+                font-size: 14px;
             }
         }
 
