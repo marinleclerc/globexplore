@@ -57,9 +57,10 @@ if ($(".navigation").length > 0) {
 
     // Récupérez l'URL actuelle
     var currentUrl = window.location.href;
+    console.log('currentUrl:', currentUrl)
 
     // Testez si l'URL contient les mots "accueil" ou "home" (insensible à la casse)
-    if (currentUrl.toLowerCase().includes("accueil") || currentUrl.toLowerCase().includes("home")) {
+    if (currentUrl.toLowerCase().includes("accueil") || currentUrl.toLowerCase().includes("home") || currentUrl == "https://www.perlesdesaveurs.com/") {
         header.classList.add('home');
     } else {
         console.log("L'URL ne contient pas 'accueil' ou 'home'.");

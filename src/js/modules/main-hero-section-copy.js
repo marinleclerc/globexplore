@@ -63,41 +63,16 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
         }
     });
 
-    //.addLabel('clip', 'start+=0.15')
-    /* 
-            .fromTo(clipElement, {
-                clipPath: 'inset(0% 0% round 0vw)'
-            }, {
-                clipPath: 'inset(50% 50% round 23vw)'
-            }) */
-
 
     clipTimeline
-        .addLabel('start', 0)
-        .addLabel('clip', 'start+=0.15')
-        .set(clipElement, { clipPath: 'inset(0% 0% round 0vw)' })
-        .to(clipElement, {
-            clipPath: 'inset(29% 39% round 23vw)',
-            ease: 'linear',
-        })
-        .to(clipElement, {
-            clipPath: 'inset(50% 50% round 23vw)',
-            ease: 'linear',
-        })
-
-
-    /*         .to(clipElement, {
-            clipPath: 'inset(50% 50% round 23vw)',
-            duration: 1,
-        }) */
-    /*  
-    .to(clipElement, {
-        clipPath: 'inset(10% 30% round 15vw)',
-        duration: 1,
-    }); */
-
-
-
+    .addLabel('start', 0)
+    .addLabel('delay', 'start+=1.5')
+        //.to(clipElement, { clipPath: 'inset(0% 0% round 0vw)' })
+        .fromTo(clipElement, {
+            clipPath: 'inset(0% 0% round 0vw)'
+        }, {
+            clipPath: 'inset(50% 50% round 23vw)'
+        }) 
 
     // Créez une timeline pour l'animation
     const otherClipTimeline = gsap.timeline({
@@ -138,32 +113,38 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
 
 
     gsap
-        .timeline({
-            defaults: {
-                duration: 1.2,
-                ease: 'expo.inOut',
-            },
-        })
-        .addLabel('start', 0)
-        .set(clipElement, { willChange: 'clip-path' })
-        .set(lettersTitle, { opacity: 0, y: 5 })
+    .timeline({
+      defaults: {
+        duration: 1.5, // Augmentez la durée totale de l'animation à 2.5 secondes
+        ease: 'expo.inOut',
+      },
+    })
+    .addLabel('start', 0)
+    .set(lettersTitle, { opacity: 0, y: 5 })
+  
+    .addLabel('clip', 'start+=0.5') // Démarre l'animation clip-path après un délai initial de 0.5 secondes
+  
+    .to(".logo-loader", {
+        opacity: 0,
+        duration: 0.5,
 
-        .addLabel('clip', 'start+=0.15')
-
-        .fromTo(clipElement, {
-            clipPath: 'inset(29% 39% round 23vw)'
-        }, {
-            clipPath: 'inset(0% 0% round 0vw)'
-        }, 'clip+=0.1')
-        .to(lettersTitle, {
-            opacity: 1,
-            y: 0,
-            stagger: 0.02,
-            delay: -1 // Apply stagger here
-        })
-        .to(".main-hero-section-copy .description", {
-            opacity: 1,
-            delay: -1 // Apply stagger here
-        })
+      })
+    .fromTo(
+      clipElement,
+      { clipPath: 'inset(50% 50% round 23vw)' },
+      { clipPath: 'inset(0% 0% round 0vw)' },
+      'clip+=0.1'
+    )
+    .to(lettersTitle, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.02,
+      delay: -1,
+    })
+    .to('.main-hero-section-copy .description', {
+      opacity: 1,
+        delay: -1,
+    })
+    .set(clipElement, { clipPath: 'inset(0% 0% round 0vw)' });
 
 }
