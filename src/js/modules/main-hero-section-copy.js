@@ -129,6 +129,10 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
         duration: 0.5,
 
       })
+    .to('.clip__loader', {
+        opacity: 0,
+        duration: 0,
+    }, 'clip+=0.1')
     .fromTo(
       clipElement,
       { clipPath: 'inset(50% 50% round 23vw)' },

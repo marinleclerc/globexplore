@@ -26,7 +26,7 @@ function buildScss() {
     .pipe(plugins.sass())
     .pipe(plugins.postcss(postcssPlugins))
     .pipe(dest(config.dest.scss))
-    .pipe(exec('yarn deploy-prod:css'))
+    .pipe(exec('yarn deploy-dev:css'))
 
 }
 
