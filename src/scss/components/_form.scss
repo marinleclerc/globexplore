@@ -340,6 +340,10 @@ form {
         .legal-consent-container {
             color: $text-color2;
 
+            p, .hs-richtext {
+                font-size: 12px;
+            }
+
             .hs-form-booleancheckbox-display {
                 span {
                     margin-left: 0;

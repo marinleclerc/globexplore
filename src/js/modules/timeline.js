@@ -59,7 +59,7 @@ datePickers.forEach(function (datePicker) {
         contentsDiv.style.height = maxHeight + 'px';
     }
 
-    if ($(window).width() < 992) {
+    if ($(window).width() < 768) {
         // Sélectionnez la div de classe "swiper-wrapper"
         var swiperWrapper = document.querySelector('.timeline .swiper-wrapper');
 
@@ -78,6 +78,24 @@ datePickers.forEach(function (datePicker) {
                 // Configuration de Swiper
                 spaceBetween: 30,
                 slidesPerView: "auto",
+                navigation: {
+                    nextEl: '.timeline .controller.next', // Sélecteur de l'élément suivant
+                    prevEl: '.timeline .controller.previous', // Sélecteur de l'élément précédent
+                },
+                slidesOffsetAfter: 300,
+                on: {
+                    slideChange: function () {
+                        // Mettez à jour la classe "active" des éléments de contenu en fonction de la diapositive actuelle
+                        var currentSlideIndex = mySwiper.activeIndex;
+                        var contentElements = document.querySelectorAll('.content');
+                        contentElements.forEach(function (contentElement, index) {
+                            contentElement.classList.remove('active');
+                            if (index === currentSlideIndex) {
+                                contentElement.classList.add('active');
+                            }
+                        });
+                    },
+                },
             });
         }
 
@@ -90,6 +108,9 @@ datePickers.forEach(function (datePicker) {
                 // Initialiser Swiper.js si les éléments "date-picker" dépassent la largeur
                 initSwiper();
             }
+
+            var totalDatePickerWidth = getTotalDatePickerWidth();
+            var swiperWrapperWidth = swiperWrapper.offsetWidth;
         }
 
     }

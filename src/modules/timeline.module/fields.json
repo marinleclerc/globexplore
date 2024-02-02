@@ -139,6 +139,28 @@
                     "controlling_value_regex": "custom",
                     "operator": "EQUAL"
                 }
+            },
+            {
+            "name": "theme",
+            "label": "Theme",
+            "required": false,
+            "locked": false,
+            "display": "select",
+            "inline_help_text": "",
+            "help_text": "",
+            "choices": [
+            [
+              "dark",
+              "Dark"
+            ],
+            [
+              "light",
+              "Light"
+            ]
+            ],
+            "type": "choice",
+            "placeholder": "",
+            "default": "dark" 
             }
         ]
     },

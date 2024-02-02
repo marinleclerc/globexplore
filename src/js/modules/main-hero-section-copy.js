@@ -5,7 +5,6 @@ var ScrollTrigger = require('gsap/ScrollTrigger');
 
 if (jQuery("section").hasClass("main-hero-section-copy")) {
 
-
     const splitTitle = new SplitText('.main-hero-section-copy h1', {
         type: "chars, words",
         charsClass: "chars chars++"
@@ -48,6 +47,7 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
     // Sélectionnez votre élément clip
     const clipElement = document.querySelector('.clip');
 
+    if ($(window).width() > 768) {
     // Créez une timeline pour l'animation
     const clipTimeline = gsap.timeline({
         scrollTrigger: {
@@ -63,35 +63,47 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
         }
     });
 
-
     clipTimeline
     .addLabel('start', 0)
     .addLabel('delay', 'start+=1.5')
         //.to(clipElement, { clipPath: 'inset(0% 0% round 0vw)' })
-        .fromTo(clipElement, {
+        .set(clipElement, { clipPath: 'inset(0% 0% round 0vw)' })
+        .to(clipElement, {
+            clipPath: 'inset(29% 39% round 23vw)',
+            ease: 'linear',
+        })
+        .to(clipElement, {
+            clipPath: 'inset(50% 50% round 23vw)',
+            ease: 'linear',
+        })
+/*         .fromTo(clipElement, {
             clipPath: 'inset(0% 0% round 0vw)'
         }, {
             clipPath: 'inset(50% 50% round 23vw)'
-        }) 
+        })  */
 
-    // Créez une timeline pour l'animation
-    const otherClipTimeline = gsap.timeline({
-        scrollTrigger: {
-            trigger: selector,
-            start: 'top top',
-            end: 'bottom bottom',
-            markers: false,
-            onEnter: () => {
-                otherClipTimeline.to(".main-hero-section-copy h1", {
-                    opacity: 0,
-                })
-                otherClipTimeline.to(".main-hero-section-copy .description", {
-                    opacity: 0,
-                })
+    }
+
+
+        // Créez une timeline pour l'animation
+        const otherClipTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: selector,
+                start: 'top top',
+                end: 'bottom bottom',
+                markers: false,
+                onEnter: () => {
+                    otherClipTimeline.to(".main-hero-section-copy h1", {
+                        opacity: 0,
+                    })
+                    otherClipTimeline.to(".main-hero-section-copy .description", {
+                        opacity: 0,
+                    })
+                }
+                // Effet de "scrub" pour lier au défilement
             }
-            // Effet de "scrub" pour lier au défilement
-        }
-    });
+        });
+        
 
     const otherSecondClipTimeline = gsap.timeline({
         scrollTrigger: {
@@ -126,7 +138,7 @@ if (jQuery("section").hasClass("main-hero-section-copy")) {
   
     .to(".logo-loader", {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.8,
 
       })
     .to('.clip__loader', {

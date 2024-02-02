@@ -13,10 +13,10 @@
     transition: all 0.5s;
 
     &.primary {
-        font-size: 14px;
-        width: 130px;
-        height: 130px;
-        min-width: 130px;
+        font-size: 16px;
+        width: 150px;
+        height: 150px;
+        min-width: 150px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -27,7 +27,7 @@
         overflow: hidden;
 
         span {
-            max-width: 110px;
+            max-width: 120px;
             text-align: center;
         }
 

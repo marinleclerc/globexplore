@@ -76,14 +76,16 @@
         {% set hide_arrow = false %}
         <nav class="container-blog-pagination dark">
             {% if hide_arrow == false || (hide_arrow == true && last_page_num) %}
+            {% if current_page_num != 1 %}
             <a class="pagination-button prev{{ " disabled" if !last_page_num }}"
-                href="{{actual_url}}?page={{total_pages}}">
+                href="{{actual_url}}?page={{current_page_num - 1}}#recipes-listing">
                 <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M5.39773 0.499999L6.27273 1.36364L2.67045 4.96591L12 4.96591L12 6.21591L2.67045 6.21591L6.27273 9.80682L5.39773 10.6818L0.306819 5.59091L5.39773 0.499999Z"
                         fill="#121212" />
                 </svg>
             </a>
+            {% endif %}
             {% endif %}
             <div class="numbers-wrapper">
                 {% if current_page_num == 1 || current_page_num == total_pages %}
@@ -92,17 +94,25 @@
                 {% for page in range(0,total_pages) %}
                 {% if ellipsis == true %}
                 {% if current_page_num > 1 + range_num && loop.index == 1 %}
-                <a class="pagination-number" href="{{actual_url}}?page={{loop.index}}">{{ loop.index }}</a>
+                <a class="pagination-number first" href="{{actual_url}}?page={{loop.index}}#recipes-listing">{{
+                    loop.index
+                    }}</a>
                 {% endif %}
                 {% if current_page_num > 1 + (range_num + 1) && loop.index == 1 %}
                 <p class="pagination-number ellipsis">...</p>
                 {% endif %}
                 {% endif %}
-                {% if (loop.index < current_page_num && loop.index>= current_page_num - range_num) || (loop.index >
-                    current_page_num && loop.index <= current_page_num + range_num) %} <a class="pagination-number"
-                        href="{{actual_url}}?page={{loop.index}}">{{ loop.index }}</a>
+                {% set total = current_page_num|int + range_num %}
+                {% if (loop.index < current_page_num|int && loop.index>= current_page_num|int - range_num) ||
+                    (loop.index >
+                    current_page_num|int && loop.index <= current_page_num|int + range_num) %} <a
+                        class="pagination-number second" data-index="{{loop.index}}"
+                        data-current-page-num="{{current_page_num}}" data-range-num="{{range_num}}"
+                        data-total="{{total}}" href="{{actual_url}}?page={{loop.index}}#recipes-listing">{{
+                        loop.index }}</a>
                         {% elif loop.index == current_page_num %}
-                        <a class="pagination-number active" href="{{actual_url}}?page={{loop.index}}">{{ loop.index
+                        <a class="pagination-number active" href="{{actual_url}}?page={{loop.index}}#recipes-listing">{{
+                            loop.index
                             }}</a>
                         {% endif %}
                         {% if ellipsis == true %}
@@ -110,20 +120,26 @@
                             class="pagination-number ellipsis">...</p>
                             {% endif %}
                             {% if current_page_num < total_pages - range_num && loop.index==total_pages %} <a
-                                class="pagination-number" href="{{actual_url}}?page={{loop.index}}">{{ loop.index }}</a>
+                                class="pagination-number third"
+                                href="{{actual_url}}?page={{loop.index}}#recipes-listing">{{
+                                loop.index }}
+                                </a>
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
             </div>
             {% if hide_arrow == false || (hide_arrow == true && next_page_num) %}
+            {% if current_page_num != total_pages %}
+            {% set index = current_page_num|int + 1 %}
             <a class="pagination-button next{{ " disabled" if !next_page_num }}"
-                href="{{ blog_page_link(next_page_num) }}">
+                href="{{actual_url}}?page={{index}}#recipes-listing">
                 <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M6.60227 10.5L5.72727 9.63636L9.32955 6.03409H0V4.78409H9.32955L5.72727 1.19318L6.60227 0.318182L11.6932 5.40909L6.60227 10.5Z"
                         fill="#121212" />
                 </svg>
             </a>
+            {% endif %}
             {% endif %}
         </nav>
         {% endif %}
@@ -162,13 +178,13 @@
             {% if loop.index > debut && loop.index < fin + 1 %} <div class="recipe-wrapper">
                 <div class="recipe">
                     {% set my_content = content_by_id(item.page_field) %}
-                    <a href="{{ my_content.absolute_url }}" class="featured-image">
+                    <a href="{{ my_content.absolute_url }}#recipes-listing" class="featured-image">
                         <div class="wrapper-image">
                             <img class="fit-cover" loading='lazy' src='{{item.image_field.src }}' alt='' width=''
                                 height='' />
                         </div>
                     </a>
-                    <a class="tag label grey" href="{{actual_url}}?tag={{item.tag.tag_value}}">{{
+                    <a class="tag label grey" href="{{actual_url}}?tag={{item.tag.tag_value}}#recipes-listing">{{
                         item.tag.tag_label
                         }}</a>
                     <div class="title-recipe">{{ item.post_title }}</div>
@@ -200,14 +216,16 @@
         {% set hide_arrow = false %}
         <nav class="container-blog-pagination dark">
             {% if hide_arrow == false || (hide_arrow == true && last_page_num) %}
+            {% if current_page_num != 1 %}
             <a class="pagination-button prev{{ " disabled" if !last_page_num }}"
-                href="{{actual_url}}?tag={{tag_request}}&page={{total_pages}}">
+                href="{{actual_url}}?tag={{tag_request}}&page={{current_page_num - 1}}#recipes-listing">
                 <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M5.39773 0.499999L6.27273 1.36364L2.67045 4.96591L12 4.96591L12 6.21591L2.67045 6.21591L6.27273 9.80682L5.39773 10.6818L0.306819 5.59091L5.39773 0.499999Z"
                         fill="#121212" />
                 </svg>
             </a>
+            {% endif %}
             {% endif %}
             <div class="numbers-wrapper">
                 {% if current_page_num == 1 || current_page_num == total_pages %}
@@ -216,19 +234,22 @@
                 {% for page in range(0,total_pages) %}
                 {% if ellipsis == true %}
                 {% if current_page_num > 1 + range_num && loop.index == 1 %}
-                <a class="pagination-number" href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{ loop.index
+                <a class="pagination-number"
+                    href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}#recipes-listing">{{ loop.index
                     }}</a>
                 {% endif %}
                 {% if current_page_num > 1 + (range_num + 1) && loop.index == 1 %}
                 <p class="pagination-number ellipsis">...</p>
                 {% endif %}
                 {% endif %}
-                {% if (loop.index < current_page_num && loop.index>= current_page_num - range_num) || (loop.index >
-                    current_page_num && loop.index <= current_page_num + range_num) %} <a class="pagination-number"
-                        href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{ loop.index }}</a>
+                {% if (loop.index < current_page_num|int && loop.index>= current_page_num|int - range_num) ||
+                    (loop.index >
+                    current_page_num|int && loop.index <= current_page_num|int + range_num) %} <a
+                        class="pagination-number" href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{
+                        loop.index }}</a>
                         {% elif loop.index == current_page_num %}
                         <a class="pagination-number active"
-                            href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">{{
+                            href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}#recipes-listing">{{
                             loop.index
                             }}</a>
                         {% endif %}
@@ -237,21 +258,25 @@
                             class="pagination-number ellipsis">...</p>
                             {% endif %}
                             {% if current_page_num < total_pages - range_num && loop.index==total_pages %} <a
-                                class="pagination-number" href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}">
+                                class="pagination-number"
+                                href="{{actual_url}}?tag={{tag_request}}&page={{loop.index}}#recipes-listing">
                                 {{ loop.index }}</a>
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
             </div>
             {% if hide_arrow == false || (hide_arrow == true && next_page_num) %}
+            {% if current_page_num != total_pages %}
+            {% set index = current_page_num|int + 1 %}
             <a class="pagination-button next{{ " disabled" if !next_page_num }}"
-                href="{{ blog_page_link(next_page_num) }}">
+                href="{{actual_url}}?tag={{tag_request}}&page={{index}}#recipes-listing">
                 <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M6.60227 10.5L5.72727 9.63636L9.32955 6.03409H0V4.78409H9.32955L5.72727 1.19318L6.60227 0.318182L11.6932 5.40909L6.60227 10.5Z"
                         fill="#121212" />
                 </svg>
             </a>
+            {% endif %}
             {% endif %}
         </nav>
         {% endif %}

@@ -9,6 +9,9 @@
         top: 50%;
         transform: translate(-50%, -50%);
         z-index: 111;
+        @media screen and (max-width: $size3) {
+            display: none;
+        }
     }
 
     .container {
@@ -64,12 +67,27 @@
         .description {
             color: $text-color2;
             text-align: center;
+            @media screen  and (max-width: $size3) {
+                opacity: 1 !important;
+            }
         }
 
         h1 {
             width: 1100px;
             max-width: 100%;
             margin: 0 auto 45px;
+
+            @media screen  and (max-width: $size3) {
+                div {
+                    position: relative;
+                    display: inline-block;
+                    translate: none;
+                    rotate: none;
+                    scale: none;
+                    transform: translate(0px, 0px) !important;
+                    opacity: 1 !important;
+                }
+            }
         }
 
         .description {
@@ -143,7 +161,7 @@
         }
 
         .featured-text {
-            font-size: 70px;
+            font-size: 58px;
             font-style: normal;
             font-weight: 300;
             line-height: 120%;
@@ -162,10 +180,10 @@
             }
 
             @media screen and (max-width: $size3) {
-                font-size: 45px;
+                font-size: 35px;
 
                 span {
-                    font-size: 55px;
+                    font-size: 42px;
                 }
             }
         }

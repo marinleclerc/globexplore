@@ -98,9 +98,13 @@
 
     .recipes {
         display: flex;
-        //justify-content: space-between;
+        //justify-content: space-between; 
         flex-wrap: wrap;
         margin: 0 -70px;
+
+        @media screen and (max-width: 1480px) {
+            margin: 0;
+        }
 
         @media screen and (max-width: $size2) {
             margin: 0 -30px;
@@ -266,11 +270,11 @@
                 transition: color 0.3s;
 
                 @media screen and (max-width: $size2) {
-                    font-size: 22px;
+                    font-size: 28px;
                 }
 
                 @media screen and (max-width: $size3) {
-                    font-size: 20px;
+                    font-size: 26px;
                 }
             }
 

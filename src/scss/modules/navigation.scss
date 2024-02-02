@@ -7,7 +7,11 @@
     transition: padding 0.3s, background-color 0.3s;
 
     .container {
-        min-height: 96px;
+        min-height: 103px;
+
+        @media screen and (max-width: $size2) {
+            min-height: 74px;
+        }
 
         a.logo {
             img {
@@ -39,10 +43,13 @@
             }
         }
 
-        &.active {
-            .container a.logo img {
-                width: 160px;
-                top: 50%;
+
+        @media screen and (min-width: 1081px) {
+            &.active {
+                .container a.logo img {
+                    width: 160px;
+                    top: 50%;
+                }
             }
         }
     }

@@ -37,6 +37,13 @@
                 a {
                     display: block;
                     text-decoration: none;
+                    svg path {
+                        transition: fill 0.3s;
+                    }
+
+                    &:hover svg path {
+                        fill: $color2;
+                    }
                 }
             }
         }

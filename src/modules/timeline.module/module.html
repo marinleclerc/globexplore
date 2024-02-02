@@ -1,10 +1,10 @@
 <section id="{{module.module_identity}}"
-    class="timeline {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
+    class="timeline {{module.content_style.theme}} {% if module.content_style.padding_choice == 'classic' %}{% if module.content_style.section_type != 'none' %} section-{{ module.content_style.section_type }}{% endif %}{% if module.content_style.padding_top == false %} pt-0{% endif %}{% if module.content_style.padding_bottom == false %} pb-0{% endif %}{% endif %}"
     {% if module.content_style.padding_choice=='custom' %}
     style="--pt:{{ module.content_style.custom_padding_top }}px; --pb:{{ module.content_style.custom_padding_top }}px;"
     {% endif %}>
     <div class="container">
-        <div class="label grey">
+        <div class="label {% if module.content_style.theme == 'dark' %}grey{% endif %} ">
             {{module.label_value}}
         </div>
         <div class="title">
@@ -43,6 +43,29 @@
                     </div>
                     {% endfor %}
                 </div>
+            </div>
+            <div class="controllers {% if module.controllers.controller_type == 'custom' %}custom{% endif %}"
+                style="{% if module.controllers.controller_type == 'custom' %}--color: rgba({{ module.controllers.field_color.color|convert_rgb }}, {{ module.controllers.field_color.opacity/100 }});{% endif %}">
+                <button class="controller previous">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none">
+                        <line x1="29.4855" y1="22.0609" x2="13.0333" y2="22.0609" stroke="#fff"
+                            stroke-width="1.49565" />
+                        <path d="M16.7726 25.8L13.0335 22.0609L16.7726 18.3218" stroke="#fff"
+                            stroke-width="1.49565" />
+                        <rect x="42.5" y="42.5" width="42" height="42" rx="21" transform="rotate(-180 42.5 42.5)"
+                            stroke="#fff" />
+                    </svg>
+                </button>
+                <button class="controller next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none">
+                        <line x1="29.4855" y1="22.0609" x2="13.0333" y2="22.0609" stroke="#fff"
+                            stroke-width="1.49565" />
+                        <path d="M16.7726 25.8L13.0335 22.0609L16.7726 18.3218" stroke="#fff"
+                            stroke-width="1.49565" />
+                        <rect x="42.5" y="42.5" width="42" height="42" rx="21" transform="rotate(-180 42.5 42.5)"
+                            stroke="#fff" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>

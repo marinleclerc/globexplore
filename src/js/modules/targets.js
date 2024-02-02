@@ -16,8 +16,13 @@ if ($(".targets").length > 0 || $(window).width() < 992) {
         mousewheel: false,
         freeMode: false,
         cursorGrab: true,
-        slideToClickedSlide: true,
+        slideToClickedSlide: true, 
         spaceBetween: 45,
+                // Ajoutez les options de navigation pour les contrôles suivant/précédent
+                navigation: {
+                    nextEl: '.targets .controller.next',
+                    prevEl: '.targets .controller.previous',
+                },
     });
 
 }

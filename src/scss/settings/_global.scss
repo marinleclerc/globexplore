@@ -8,9 +8,10 @@
   outline: 0;
 }
 
-/* html {
-  scroll-behavior: smooth;
-} */
+html {
+  //scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
 
 html,
 body {
@@ -35,7 +36,7 @@ div.container {
   max-width: $size0;
   margin: 0 auto;
 
-  @media screen and (max-width: $size1) {
+  @media screen and (max-width: $size0) {
     padding: 0 30px;
   }
 }
@@ -111,6 +112,9 @@ h1,
   @media screen and (max-width: $size2) {
     font-size: 55px;
   }
+  @media screen and (max-width: $size3) {
+    font-size: 45px;
+  }
 }
 
 h2,
@@ -122,6 +126,9 @@ h2,
   @media screen and (max-width: $size2) {
     font-size: 40px;
   }
+  @media screen and (max-width: $size3) {
+    font-size: 32px;
+  }
 }
 
 h3,
@@ -132,6 +139,9 @@ h3,
 
   @media screen and (max-width: $size2) {
     font-size: 30px;
+  }
+  @media screen and (max-width: $size3) {
+    font-size: 26px;
   }
 }
 

@@ -115,6 +115,14 @@
                 p {
                     color: #fff;
                 }
+
+                .btn {
+                    display: none;
+                    margin-top: 10px;
+                    @media screen and (max-width: $size3) {
+                        display: inline-block;
+                    }
+                }
             }
         }
     }
